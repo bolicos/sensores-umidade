@@ -17,7 +17,6 @@ public class Sensor extends NamedEntity {
 	private String plant;
 	private String track;
 	
-
 	public String getTrack() {
 		return track;
 	}
