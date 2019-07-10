@@ -15,7 +15,16 @@ public class Sensor extends NamedEntity {
 	private static final long serialVersionUID = 1L;
 	
 	private String plant;
+	private String track;
 	
+
+	public String getTrack() {
+		return track;
+	}
+
+	public void setTrack(String track) {
+		this.track = track;
+	}
 
 	public String getPlant() {
 		return plant;

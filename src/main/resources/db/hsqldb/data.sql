@@ -62,10 +62,11 @@ INSERT INTO products VALUES (3,
 'Ração Whiskas Sachê Atum para Gatos Adultos 85g', 
 'WHISKAS® Sachê Adulto Sabor Atum ao Molho WHISKAS® sabe o que os gatos naturalmente precisam e amam. Por isso, cada sachê é preparado cuidadosamente com ingredientes de alta qualidade, garantindo os nutrientes que eles precisam todos os dias, e agora com um molho ainda mais encorpado. Disponível em embalagens de 85g, prática, fácil de abrir e que contém a medida certa para uma refeição saudável, completa e balanceada.');
 
-INSERT INTO sensors VALUES (1, 'Sensor 1', 'Strawberry');
-INSERT INTO sensors VALUES (2, 'Sensor 2', 'Cactus');
-INSERT INTO sensors VALUES (3, 'Sensor 3', 'Violet');
-INSERT INTO sensors VALUES (4, 'Sensor 4', 'Morango');
+INSERT INTO sensors VALUES (1, 'Sensor 1', 'Strawberry', '60% a 80%');
+INSERT INTO sensors VALUES (2, 'Sensor 2', 'Cactus', '20% a 50%');
+INSERT INTO sensors VALUES (3, 'Sensor 3', 'Violet', '40% a 80%');
+INSERT INTO sensors VALUES (4, 'Sensor 4', 'Lavender', '20% a 30%');
+INSERT INTO sensors VALUES (5, 'Sensor 5', 'Mushroom', '80% a 90%');
 
 
 

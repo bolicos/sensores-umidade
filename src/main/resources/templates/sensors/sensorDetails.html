@@ -9,8 +9,12 @@ th:replace="~{fragments/layout :: layout (~{::body},'sensors')}">
 
     <table class="table table-striped" th:object="${sensor}">
       <tr>
-        <th>Name</th>
-        <td><b th:text="*{name}"></b></td>
+        <th>Plant</th>
+        <td><b th:text="*{plant}"></b></td>
+      </tr>
+      <tr>
+        <th>Ideal track</th>
+        <td><b th:text="*{track}"></b></td>
       </tr>
     </table>
 
