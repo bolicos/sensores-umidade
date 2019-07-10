@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" 
+th:replace="~{fragments/layout :: layout (~{::body},'sensors')}">
+<head>
+<meta charset="utf-8">
+</head>
+<body> 
+
+    <table id="sensors" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 150px;">Sensors</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr th:each="sens : ${sensors}">
+              <td>
+                  <a th:href="@{/sensors/__${sens.id}__}" th:text="${sens.name}"/></a>
+              </td>
+          </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
