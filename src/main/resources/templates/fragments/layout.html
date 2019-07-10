@@ -63,6 +63,11 @@
                       <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                       <span>Products</span>
                   </li>
+                  
+                  <li th:replace="::menuItem ('/sensors','sensors','sensors list','th-list','Sensors')">
+                      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                      <span>Sensors</span>
+                  </li>
 
                   <li th:replace="::menuItem ('/login','login','authentication','th-list',
                   			${#httpServletRequest.remoteUser == null ? 
