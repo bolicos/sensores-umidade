@@ -22,9 +22,6 @@ public class Product extends NamedEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-
-	
+	}	
 	
 }
