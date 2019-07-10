@@ -75,8 +75,7 @@ CREATE INDEX products_name ON products (name);
 CREATE TABLE sensors (
   id   INTEGER IDENTITY PRIMARY KEY,
   name VARCHAR(80),
-  plant VARCHAR(30),
-  humidity VARCHAR(10)  
+  plant VARCHAR(30) 
 );
 CREATE INDEX sensors_name ON sensors (name);
 
