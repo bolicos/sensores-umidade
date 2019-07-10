@@ -10,7 +10,6 @@
 	<name>sensores-umidade</name>
 	<description>Sensores de Umidade</description>
 
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
