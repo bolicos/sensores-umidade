@@ -20,7 +20,7 @@ public class Sensor extends NamedEntity {
 	public String getPlant() {return plant;}
 	public void setPlant(String plant) {this.plant = plant;}
 	
-	public int geHumidity() {return humidity;}
+	public int getHumidity() {return humidity;}
 	public void setHumidity(int humidity) {this.humidity = humidity;}
 	
 }
