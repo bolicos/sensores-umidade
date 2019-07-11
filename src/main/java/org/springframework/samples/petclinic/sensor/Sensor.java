@@ -22,4 +22,5 @@ public class Sensor extends NamedEntity {
 	
 	public int geHumidity() {return humidity;}
 	public void setHumidity(int humidity) {this.humidity = humidity;}
+	
 }
