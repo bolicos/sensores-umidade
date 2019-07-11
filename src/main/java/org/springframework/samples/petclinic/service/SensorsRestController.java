@@ -23,13 +23,13 @@ public class SensorsRestController {
 	public ResponseEntity<Void> updateSensor(@PathVariable("sensorId") int sensorId, Sensor sensor, UriComponentsBuilder ucBuilder){
 		Sensor currentsensor = this.sensorservice.findById(sensorId);
 		if(currentsensor == null){return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);}
-		/*
+		
 		currentsensor.setId(sensor.getId());
 		currentsensor.setName(sensor.getName());
 		currentsensor.setPlant(sensor.getPlant());
 		currentsensor.setTrack(sensor.getTrack());
 		currentsensor.setHumidity(sensor.getHumidity());
-		*/
+		
 		this.sensorservice.saveSensor(currentsensor);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
