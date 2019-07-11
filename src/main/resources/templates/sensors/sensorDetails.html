@@ -16,6 +16,10 @@ th:replace="~{fragments/layout :: layout (~{::body},'sensors')}">
         <th>Ideal track</th>
         <td><b th:text="*{track}"></b></td>
       </tr>
+      <tr>
+        <th>Current humidity</th>
+        <td><b th:text="*{humidity}"></b></td>
+      </tr>
     </table>
 
   </body>

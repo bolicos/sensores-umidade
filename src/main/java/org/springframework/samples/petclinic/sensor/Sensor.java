@@ -13,7 +13,17 @@ public class Sensor extends NamedEntity {
 	private String plant;
 	private String track;
 	private int humidity;
-	
+	/*
+	public Sensor() {
+		
+	}
+	public Sensor(int id,String name, String plant,String track, int humidity) {
+		super(int id,String name);
+		this.plant = plant;
+		this.track = track;
+		this.humidity = humidity;
+	}
+	*/
 	public String getTrack() {return track;}
 	public void setTrack(String track) {this.track = track;}
 
