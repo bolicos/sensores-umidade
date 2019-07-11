@@ -3,10 +3,15 @@ package org.springframework.samples.petclinic.sensor;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import org.springframework.core.style.ToStringCreator;
 import org.springframework.samples.petclinic.model.NamedEntity;
+import org.springframework.samples.petclinic.service.JacksonCustomSensorSerializer;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "sensors")
+@JsonSerialize(using = JacksonCustomSensorSerializer.class)
 public class Sensor extends NamedEntity {
 	private static final long serialVersionUID = 1L;
 	
@@ -33,4 +38,17 @@ public class Sensor extends NamedEntity {
 	public int getHumidity() {return humidity;}
 	public void setHumidity(int humidity) {this.humidity = humidity;}
 	
+	
+	@Override
+    public String toString() {
+        return new ToStringCreator(this)
+
+            .append("id", this.getId())
+            .append("name", this.getName())
+            .append("plant", this.getPlant())
+            .append("track", this.getTrack())
+            .append("humidity", this.getHumidity())
+
+            .toString();
+    }
 }
