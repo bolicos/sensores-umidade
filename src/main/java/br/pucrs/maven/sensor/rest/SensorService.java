@@ -1,4 +1,4 @@
-package br.pucrs.maven.sensor.service;
+package br.pucrs.maven.sensor.rest;
 
 import java.util.Collection;
 
