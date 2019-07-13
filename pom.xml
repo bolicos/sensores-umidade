@@ -5,8 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.springframework</groupId>
-	<artifactId>gs-consuming-rest</artifactId>
+	<artifactId>sensores-umidade</artifactId>
 	<version>0.1.0</version>
+	<packaging>jar</packaging>
+	<name>sensores-umidade</name>
+	<description>Sensores de Umidade</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
