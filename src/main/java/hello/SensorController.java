@@ -15,7 +15,7 @@ public class SensorController {
 	@Autowired
 	private SensorService sns;
 
-	@GetMapping("/sensors")
+	@GetMapping("/")
 	public String showSensor(Model model) {
 		Sensor sensor = sns.getSensor();
 		log.info(sensor.toString());
