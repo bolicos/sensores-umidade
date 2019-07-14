@@ -1,13 +1,73 @@
 <!DOCTYPE html>
 
-<html xmlns:th="https://www.thymeleaf.org">
 
+<html xmlns:th="https://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>Sensors</title>	
+		
+		<style>
+			h1 {
+			 	color: green;
+			 	font-family: calibri;
+			 	text-align: center;
+			 	font-size: 300%;
+			}
+			table {
+			 	font-family: arial, sans-serif;
+			 	border: 1px solid black;
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			td, th {
+  				border-collapse: collapse;
+			  	border: 1px solid #dddddd;
+			  	text-align: center;
+			  	padding: 8px;
+			}
+			th {
+				background-color: black;
+  				color: white;
+			}
+
+			tr:nth-child(even) {
+			 	background-color: #dddddd;
+			}
+		</style>
+		
+	</head>
+	
   <body>
 
-    <h2>Sensor Details</h2>
-	<p>Id Sensor: <b th:text="${s.id}"></b> </p>
-	<p>Humidity:  <b th:text="${s.humidity}"></b> </p>
-	<p>Ideal Track: <b> 60% 80% </b> </p>
-   
+			<h1>Sensor Details</h1>
+			<table>
+						<tr>
+							<th>ID SENSOR</th>
+							<th>HUMIDITY</th>
+							<th>IDEAL TRACK</th>
+						</tr>
+						<tr>
+							<td> <p th:text="${s.id}"></p> </td>
+							<td> <p th:text="${s.humidity}"></p>  </td>
+							<td> <p> 60% - 80% </p> </td>
+							
+						</tr>
+						<tr>
+							<td> <p th:text="${s.id}"></p> </td>
+							<td> <p th:text="${s.humidity}"></p>  </td>
+							<td> <p> 60% - 80% </p> </td>
+							
+						</tr>
+						<tr>
+							<td> <p th:text="${s.id}"></p> </td>
+							<td> <p th:text="${s.humidity}"></p>  </td>
+							<td> <p> 60% - 80% </p> </td>
+							
+						</tr>
+			</table>
+			
+			
   </body>
 </html>
