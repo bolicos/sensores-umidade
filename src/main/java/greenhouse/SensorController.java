@@ -1,4 +1,4 @@
-package hello;
+package greenhouse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,12 +13,16 @@ public class SensorController {
 	private static final Logger log = LoggerFactory.getLogger(SensorController.class);
 
 	@Autowired
-	private SensorService sns;
+	private SensorService svc;
 
 	@GetMapping("/")
 	public String showSensor(Model model) {
-		Sensor sensor = sns.getSensor();
+		Sensor sensor = svc.getDataSensor();
+		
+		if((sensor.getHumidity()>=60) & (sensor.getHumidity()<=80)) {sensor.setStatus("Normal");}
+		else{sensor.setStatus(svc.getEmail());}
 		log.info(sensor.toString());
+	
 		model.addAttribute("s", sensor);
 		return "sensorDetails";
 	}

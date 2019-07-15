@@ -1,4 +1,4 @@
-package hello;
+package greenhouse;
 
 import javax.mail.internet.MimeMessage;
 
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class EmailController {
+public class EmailController{
 	
 	@Autowired private JavaMailSender mailSender;
-
-    @RequestMapping(path = "/email-send", method = RequestMethod.GET)
+	
+	@RequestMapping(path = "/email-send", method = RequestMethod.GET)
     public String sendMail() {
         try {
             MimeMessage mail = mailSender.createMimeMessage();
@@ -22,13 +22,18 @@ public class EmailController {
             MimeMessageHelper helper = new MimeMessageHelper( mail );
             helper.setTo( "sensor.humidity@gmail.com" );
             helper.setSubject( "Teste Envio de e-mail" );
-            helper.setText("<p>Test send email Sensor.</p>", true);
+            helper.setText("<h1>Test send email Sensor<h1>"
+            		+ "<p>Access link below  for view:</p>"
+            		+ "<a href=\"http://localhost:8080/\">click here</a>", true);
             mailSender.send(mail);
-
+            
             return "OK";
         } catch (Exception e) {
             e.printStackTrace();
-            return "Erro ao enviar e-mail";
+            return "Erro ao enviar email.";
         }
+       
+        
     }
+
 }
