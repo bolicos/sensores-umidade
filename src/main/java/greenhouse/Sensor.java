@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Sensor {
 
-    private String id;
+    private int id;
     private int humidity;
     //private Type type;
     private String status;
@@ -18,9 +18,9 @@ public class Sensor {
 	public Sensor() {}
     
     @JsonProperty
-    public String getId() {return id;}
+    public int getId() {return id;}
     @JsonProperty
-    public void setId(String id) {this.id = id;}
+    public void setId(int id) {this.id = id;}
     @JsonProperty
     public int getHumidity() {return humidity;}
     @JsonProperty
