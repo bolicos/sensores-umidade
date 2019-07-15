@@ -22,7 +22,7 @@ public class SensorServiceTests {
 
     @Test
     public void greetingShouldReturnDefaultMessage() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
+        assertThat(this.restTemplate.getForObject("http://localhost:8080/",
                 String.class)).contains("43242");
     }
 }
