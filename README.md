@@ -13,36 +13,24 @@ You can then access sensores-umidade here: http://localhost:8080
 
 ## Screenshot of the home page
 
--->IMAGE
+<img width="1042" alt="greenhouse" src="https://github.com/analuciabolico/sensores-umidade/blob/master/src/main/resources/templates/_images/greenhouse.png">
 
 ## In case you find a bug/suggested improvement for Spring Petclinic
 Our issue tracker is available here: https://github.com/analuciabolico/sensores-umidade/issues
 
 
-## Database configuration
-
-In its default configuration, Sensors uses an in-memory database (HSQLDB) which gets populated at startup with data.
-
-## Security configuration
-In its default configuration, Petclinic doesn't have authentication and authorization enabled.
-
-### Basic Authentication
-In order to use the basic authentication functionality, turn in on from the application.properties file
+## Email configuration
+In its default configuration of Email.
 ```
-basic.authentication.enabled=true
-```
-There is an existing user with the username admin and password admin that has access to all APIs.
- In order to add a new user, please use the following API:
-```
-POST /api/users
-{
-    "username": "secondAdmin",
-    "password": "password",
-    "enabled": true,
-    "roles": [
-    	{ "name" : "SENSOR_ADMIN" }
-	]
-}
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=sensor.humidity@gmail.com
+spring.mail.password=challenge@2019
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+spring.mail.properties.mail.smtp.ssl.enable=false
+spring.mail.test-connection=true
 ```
 
 ## Working with Sensors in Eclipse/STS
