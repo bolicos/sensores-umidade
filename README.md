@@ -15,7 +15,7 @@ You can then access sensores-umidade here: http://localhost:8080
 
 <img width="1042" alt="greenhouse" src="https://github.com/analuciabolico/sensores-umidade/blob/master/src/main/resources/templates/_images/greenhouse.jpg">
 
-## In case you find a bug/suggested improvement for Spring Petclinic
+## In case you find a bug/suggested improvement for Sensores Umidade
 Our issue tracker is available here: https://github.com/analuciabolico/sensores-umidade/issues
 
 
