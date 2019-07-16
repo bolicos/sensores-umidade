@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import greenhouse.models.Sensor;
+
 @Controller
 public class SensorController {
 
@@ -17,19 +19,19 @@ public class SensorController {
 
 	@GetMapping("/")
 	public ModelAndView showSensor(ModelAndView model) {
-		Sensor1 sensor1 = svc.getDataSensor1();
-		Sensor2 sensor2 = svc.getDataSensor2();
-		Sensor3 sensor3 = svc.getDataSensor3();
-		Sensor4 sensor4 = svc.getDataSensor4();
-		Sensor5 sensor5 = svc.getDataSensor5();
+		Sensor sensor1 = svc.getDataSensor();
+		Sensor sensor2 = svc.getDataSensor();
+		Sensor sensor3 = svc.getDataSensor();
+		Sensor sensor4 = svc.getDataSensor();
+		Sensor sensor5 = svc.getDataSensor();
 		
 		log.info(sensor1.toString());
-		log.info(sensor2.toString());
-		log.info(sensor3.toString());
-		log.info(sensor4.toString());
-		log.info(sensor5.toString());
+		//log.info(sensor2.toString());
+		//log.info(sensor3.toString());
+		//log.info(sensor4.toString());
+		//log.info(sensor5.toString());
 		
-		sensor1.valid(svc.getEmail());
+		//sensor1.valid(svc.getEmail());
 		//sensor2.valid();
 		//sensor3.valid();
 		//sensor4.valid();
