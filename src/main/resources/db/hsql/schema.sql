@@ -1,49 +1,49 @@
-DROP TABLE sensor1 IF EXISTS;
-DROP TABLE sensor2 IF EXISTS;
-DROP TABLE sensor3 IF EXISTS;
-DROP TABLE sensor4 IF EXISTS;
-DROP TABLE sensor5 IF EXISTS;
+DROP TABLE strawberries IF EXISTS;
+DROP TABLE cacti IF EXISTS;
+DROP TABLE mushrooms IF EXISTS;
+DROP TABLE violets IF EXISTS;
+DROP TABLE lavenders IF EXISTS;
 
 
-CREATE TABLE sensor1 (
+CREATE TABLE strawberries (
   id			INTEGER IDENTITY PRIMARY KEY,
-  name 			VARCHAR(30),
+  idsensor 		INTEGER,
   humidity  	INTEGER,
   status		VARCHAR(30),
   trackmin		INTEGER,
   trackmax		INTEGER,
   dataTime		DATE
 );
-CREATE TABLE sensor2 (
+CREATE TABLE cacti (
   id			INTEGER IDENTITY PRIMARY KEY,
-  name 			VARCHAR(30),
+  idsensor 		INTEGER,
   humidity  	INTEGER,
   status		VARCHAR(30),
   trackmin		INTEGER,
   trackmax		INTEGER,
   dataTime		DATE
 );
-CREATE TABLE sensor3 (
+CREATE TABLE mushrooms (
   id			INTEGER IDENTITY PRIMARY KEY,
-  name 			VARCHAR(30),
+  idsensor 		INTEGER,
   humidity  	INTEGER,
   status		VARCHAR(30),
   trackmin		INTEGER,
   trackmax		INTEGER,
   dataTime		DATE
 );
-CREATE TABLE sensor4 (
+CREATE TABLE violets (
   id			INTEGER IDENTITY PRIMARY KEY,
-  name 			VARCHAR(30),
+  idsensor 		INTEGER,
   humidity  	INTEGER,
   status		VARCHAR(30),
   trackmin		INTEGER,
   trackmax		INTEGER,
   dataTime		DATE
 );
-CREATE TABLE sensor5 (
+CREATE TABLE lavenders (
   id			INTEGER IDENTITY PRIMARY KEY,
-  name 			VARCHAR(30),
+  idsensor 		INTEGER,
   humidity  	INTEGER,
   status		VARCHAR(30),
   trackmin		INTEGER,

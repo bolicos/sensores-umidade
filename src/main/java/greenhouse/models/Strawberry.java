@@ -6,23 +6,21 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "sensor1")
-public class Sensor1 extends Sensor{
-
+@Table(name = "strawberries")
+public class Strawberry extends Plant{
 	private static final long serialVersionUID = 1L;
 
-	
-	public Sensor1(Integer id, String name, Integer humidity, String status, Integer trackmin, Integer trackmax,
+	public Strawberry(Integer id, Integer idsensor, Integer humidity, String status, Integer trackmin, Integer trackmax,
 			LocalDateTime dataTime) {
-		super(id, name, humidity, status, trackmin, trackmax, dataTime);
+		super(id, idsensor, humidity, status, trackmin, trackmax, dataTime);
 	}
 	
+	public void setTrackmin() {super.setTrackmin(60);}
+	public void setTrackmax() {super.setTrackmin(80);}
 	
 	public void valid(String email) {
 		if((this.getHumidity()>=this.getTrackmin()) & (this.getHumidity()<=this.getTrackmax()))
 		{this.setStatus("Normal");}
 		else{this.setStatus(email);}
-	}
-	
-	
+	}	
 }

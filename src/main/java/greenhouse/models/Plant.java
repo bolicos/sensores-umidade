@@ -74,4 +74,10 @@ public class Plant implements Serializable{
 	
 	public LocalDateTime getDataTime() {return dataTime;}
 	public void setDataTime(LocalDateTime dataTime) {this.dataTime = dataTime;}
+	
+	@Override
+	public String toString() {
+		return "Plant [id=" + id + ", idsensor=" + idsensor + ", humidity=" + humidity + ", status=" + status
+				+ ", trackmin=" + trackmin + ", trackmax=" + trackmax + ", dataTime=" + dataTime + "]";
+	}
 }
