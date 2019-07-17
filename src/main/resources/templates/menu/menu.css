@@ -41,8 +41,10 @@
 	color: white;
 }
 #menu img {
-	float:left
-	
+	float:left;
+}
+#menu sigin {
+	float:right;
 }
 div.content{
 	float:none;
