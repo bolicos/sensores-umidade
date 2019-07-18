@@ -1,32 +1,27 @@
 package greenhouse.models;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@MappedSuperclass
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Plant implements Serializable{
+public class Plant extends BaseEntity{
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonProperty
-    private Integer id;
+	
+	@JoinColumn(name = "sensor_id")
+    private Sensor idSensor;
 	@JsonProperty
-	@Column(name = "idsensor")
-    private Integer idsensor;
-	@JsonProperty
-	@Column(name = "name")
-    private String name;
+	@ManyToOne
+	@JoinColumn(name = "type_id")
+    private Type type;
 	@Column(name = "humidity")
 	private Integer humidity;
 	@Column(name = "status")
@@ -35,21 +30,9 @@ public class Plant implements Serializable{
     private Integer trackmin;
 	@Column(name = "trackmax")
     private Integer trackmax;
-	@Column(name = "dataTime")
+	@Column(name = "data_time")
 	private LocalDateTime dataTime;
 	
-	public Plant(Integer id, Integer idsensor, String name, Integer humidity, String status, Integer trackmin,
-			Integer trackmax, LocalDateTime dataTime) {
-		super();
-		this.id = id;
-		this.idsensor = idsensor;
-		this.name = name;
-		this.humidity = humidity;
-		this.status = status;
-		this.trackmin = trackmin;
-		this.trackmax = trackmax;
-		this.dataTime = dataTime;
-	}
 	
 	@JsonProperty
 	public Integer getId() {return id;}
@@ -81,12 +64,8 @@ public class Plant implements Serializable{
 	public LocalDateTime getDataTime() {return dataTime;}
 	public void setDataTime(LocalDateTime dataTime) {this.dataTime = dataTime;}
 	
-	public boolean isNew() {return this.id == null;}
+
 	
 	
-	@Override
-	public String toString() {
-		return "Plant [id=" + id + ", idsensor=" + idsensor + ", name=" + name + ", humidity=" + humidity + ", status="
-				+ status + ", trackmin=" + trackmin + ", trackmax=" + trackmax + ", dataTime=" + dataTime + "]";
-	}	
+		
 }
