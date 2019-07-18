@@ -8,15 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import greenhouse.controllers.PlantController;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SensorControllerTests {
+public class PlantControllerTests {
 	
 	@Autowired
-	private SensorController sensorController;
+	private PlantController plantController;
 	
     @Test
     public void contexLoads() throws Exception {
-        assertThat(sensorController).isNotNull();
+        assertThat(plantController).isNotNull();
     }
 }

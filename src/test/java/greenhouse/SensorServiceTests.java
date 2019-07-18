@@ -18,9 +18,7 @@ public class SensorServiceTests {
 
     @Test
     public void getDataSensor1Test() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://fundatec.dev.aioria.com.br/api/v1/humidity", String.class))
-        	.contains("43242")
-        	.contains("id")
-        	.contains("humidity");
+        assertThat(this.restTemplate.getForObject("http://localhost:8080/email-send", String.class))
+        	.contains("OK");
     }
 }

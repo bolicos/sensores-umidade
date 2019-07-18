@@ -10,30 +10,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import greenhouse.models.Plant;
-import greenhouse.repositories.PlantRepository;
+import greenhouse.models.Strawberry;
+import greenhouse.repositories.StrawberryRepository;
 
 @RestController
 @RequestMapping("/plants")
 public class PlantRestController {
 	
 	@Autowired
-	private PlantRepository plantrepository;
+	private StrawberryRepository strawberryrepository;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Plant> updateType(@PathVariable("id") Integer id,@RequestBody Plant plant) {
+	public ResponseEntity<Strawberry> updateType(@PathVariable("id") Integer id,@RequestBody Strawberry strawberry) {
 		
-		Plant currentPlant = this.plantrepository.findById(id);
-		if (currentPlant == null) {
-			return new ResponseEntity<Plant>(HttpStatus.NOT_FOUND);
+		Strawberry currentStrawberry = this.strawberryrepository.findById(id);
+		if (currentStrawberry == null) {
+			return new ResponseEntity<Strawberry>(HttpStatus.NOT_FOUND);
 		}
-		currentPlant.setDataTime(plant.getDataTime());
-		currentPlant.setHumidity(plant.getHumidity());
-		currentPlant.setId(plant.getId());
-		currentPlant.setIdsensor(plant.getIdsensor());
+		currentStrawberry.setDataTime(strawberry.getDataTime());
+		currentStrawberry.setHumidity(strawberry.getHumidity());
+		currentStrawberry.setId(strawberry.getId());
+		currentStrawberry.setIdsensor(strawberry.getIdsensor());
 		
-		this.plantrepository.savePlant(currentPlant);
-		return new ResponseEntity<Plant>(currentPlant, HttpStatus.NO_CONTENT);
+		this.strawberryrepository.save(currentStrawberry);
+		return new ResponseEntity<Strawberry>(currentStrawberry, HttpStatus.NO_CONTENT);
 	}
 	
 }

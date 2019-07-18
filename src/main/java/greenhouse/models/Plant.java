@@ -81,6 +81,8 @@ public class Plant implements Serializable{
 	public LocalDateTime getDataTime() {return dataTime;}
 	public void setDataTime(LocalDateTime dataTime) {this.dataTime = dataTime;}
 	
+	public boolean isNew() {return this.id == null;}
+	
 	
 	@Override
 	public String toString() {
