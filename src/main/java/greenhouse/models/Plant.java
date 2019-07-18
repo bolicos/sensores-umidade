@@ -15,7 +15,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @MappedSuperclass
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Plant implements Serializable{
-	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -26,6 +25,8 @@ public class Plant implements Serializable{
 	@Column(name = "idsensor")
     private Integer idsensor;
 	@JsonProperty
+	@Column(name = "name")
+    private String name;
 	@Column(name = "humidity")
 	private Integer humidity;
 	@Column(name = "status")
@@ -37,17 +38,19 @@ public class Plant implements Serializable{
 	@Column(name = "dataTime")
 	private LocalDateTime dataTime;
 	
-	public Plant(Integer id, Integer idsensor, Integer humidity, String status, Integer trackmin, Integer trackmax,
-			LocalDateTime dataTime) {
+	public Plant(Integer id, Integer idsensor, String name, Integer humidity, String status, Integer trackmin,
+			Integer trackmax, LocalDateTime dataTime) {
 		super();
 		this.id = id;
 		this.idsensor = idsensor;
+		this.name = name;
 		this.humidity = humidity;
 		this.status = status;
 		this.trackmin = trackmin;
 		this.trackmax = trackmax;
 		this.dataTime = dataTime;
 	}
+	
 	@JsonProperty
 	public Integer getId() {return id;}
 	@JsonProperty
@@ -63,6 +66,9 @@ public class Plant implements Serializable{
 	@JsonProperty
 	public void setHumidity(Integer humidity) {this.humidity = humidity;}
 	
+	public String getName() {return name;}
+	public void setName(String name) {this.name = name;}
+	
 	public String getStatus() {return status;}
 	public void setStatus(String status) {this.status = status;}
 	
@@ -75,9 +81,10 @@ public class Plant implements Serializable{
 	public LocalDateTime getDataTime() {return dataTime;}
 	public void setDataTime(LocalDateTime dataTime) {this.dataTime = dataTime;}
 	
+	
 	@Override
 	public String toString() {
-		return "Plant [id=" + id + ", idsensor=" + idsensor + ", humidity=" + humidity + ", status=" + status
-				+ ", trackmin=" + trackmin + ", trackmax=" + trackmax + ", dataTime=" + dataTime + "]";
-	}
+		return "Plant [id=" + id + ", idsensor=" + idsensor + ", name=" + name + ", humidity=" + humidity + ", status="
+				+ status + ", trackmin=" + trackmin + ", trackmax=" + trackmax + ", dataTime=" + dataTime + "]";
+	}	
 }

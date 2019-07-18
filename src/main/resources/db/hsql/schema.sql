@@ -7,6 +7,7 @@ DROP TABLE lavenders IF EXISTS;
 
 CREATE TABLE strawberries (
   id			INTEGER IDENTITY PRIMARY KEY,
+  name      VARCHAR(20),
   idsensor 		INTEGER,
   humidity  	INTEGER,
   status		VARCHAR(30),
@@ -16,6 +17,7 @@ CREATE TABLE strawberries (
 );
 CREATE TABLE cacti (
   id			INTEGER IDENTITY PRIMARY KEY,
+  name      VARCHAR(20),
   idsensor 		INTEGER,
   humidity  	INTEGER,
   status		VARCHAR(30),
@@ -25,6 +27,7 @@ CREATE TABLE cacti (
 );
 CREATE TABLE mushrooms (
   id			INTEGER IDENTITY PRIMARY KEY,
+  name      VARCHAR(20),
   idsensor 		INTEGER,
   humidity  	INTEGER,
   status		VARCHAR(30),
@@ -34,6 +37,7 @@ CREATE TABLE mushrooms (
 );
 CREATE TABLE violets (
   id			INTEGER IDENTITY PRIMARY KEY,
+  name      VARCHAR(20),
   idsensor 		INTEGER,
   humidity  	INTEGER,
   status		VARCHAR(30),
@@ -43,6 +47,7 @@ CREATE TABLE violets (
 );
 CREATE TABLE lavenders (
   id			INTEGER IDENTITY PRIMARY KEY,
+  name      VARCHAR(20),
   idsensor 		INTEGER,
   humidity  	INTEGER,
   status		VARCHAR(30),

@@ -10,9 +10,9 @@ import javax.persistence.Table;
 public class Cactus extends Plant{
 	private static final long serialVersionUID = 1L;
 
-	public Cactus(Integer id, Integer idsensor, Integer humidity, String status, Integer trackmin, Integer trackmax,
-			LocalDateTime dataTime) {
-		super(id, idsensor, humidity, status, trackmin, trackmax, dataTime);
+	public Cactus(Integer id, Integer idsensor, String name, Integer humidity, String status, Integer trackmin,
+			Integer trackmax, LocalDateTime dataTime) {
+		super(id, idsensor, name, humidity, status, trackmin, trackmax, dataTime);
 	}
 
 	public void setTrackmin() {super.setTrackmin(20);}

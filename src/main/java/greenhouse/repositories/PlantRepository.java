@@ -11,6 +11,7 @@ public interface PlantRepository extends Repository<Plant, Integer>{
 	
 	Collection<Plant> findAll() throws DataAccessException;
 	Plant findById(Integer id) throws DataAccessException;
+	Collection<Plant> findByName(String name) throws DataAccessException;
 	
 	void savePlant(Plant plant) throws DataAccessException;
 	void deletePlant(Plant plant) throws DataAccessException;

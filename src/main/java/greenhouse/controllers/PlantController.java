@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.ModelAndView;
 
 import greenhouse.models.Plant;
 import greenhouse.repositories.PlantRepository;
@@ -45,9 +47,9 @@ public class PlantController {
     }
 	
 	@GetMapping("/plants/{plantId}")
-    public ModelAndView showOwner(@PathVariable("plantId") int ownerId) {
+    public ModelAndView showPlant(@PathVariable("plantId") int plantId) {
         ModelAndView mav = new ModelAndView("plants/plantDetails");
-        mav.addObject(this.owners.findById(ownerId));
+        mav.addObject(this.plants.findById(plantId));
         return mav;
     }
 	

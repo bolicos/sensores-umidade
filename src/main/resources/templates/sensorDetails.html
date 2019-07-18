@@ -45,17 +45,18 @@
 			<h1>Sensor Details</h1>
 			<table>
 						<tr>
+							<th>NAME</th>
 							<th>ID SENSOR</th>
-							<th>TYPE</th>
-							<th>IDEAL TRACK</th>
 							<th>HUMIDITY</th>
+							<th>STATUS</th>
+							<th>IDEAL TRACK</th>
 						</tr>
 						<tr>
-							<td> <p th:text="${s1.id}"></p> </td>
-							<td> <p>Strawberries</p> </td>
-							<td> <p></p> 60% - 80% </td>
-							<td> <p th:text="${s1.humidity}"></p> </td>
-							
+							<td> <p th:text="${p.name}"></p> </td>
+							<td> <p th:text="${p.idsensor}"></p> </td>
+							<td> <p th:text="${p.humidity}"></p> </td>
+							<td> <p th:text="${p.status}"></p> </td>
+							<td> <p th:text="${p.trackmin}" + th:text="${p.trackmax}"></p> </td>
 						</tr>
 						<tr>
 							<td> <p th:text="${s2.id}"></p> </td>
