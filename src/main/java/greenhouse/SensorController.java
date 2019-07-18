@@ -22,7 +22,7 @@ private final PlantRepository plants;
 	public ModelAndView showSensor(ModelAndView model) {
 		Collection<Plant> plant = plants.findAll();
 		model.addObject("p", plant);
-		model.setViewName("sensorDetails");
+		model.setViewName("plantList");
 		return model;
 	}
 

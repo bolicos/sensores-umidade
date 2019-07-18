@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+
+<html xmlns:th="https://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="refresh" content="5">
+		<title>Sensors</title>	
+		
+		<style>
+			h1 {
+			 	color: green;
+			 	font-family: calibri;
+			 	text-align: center;
+			 	font-size: 300%;
+			}
+			table {
+			 	font-family: arial, sans-serif;
+			 	border: 1px solid black;
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			td, th {
+  				border-collapse: collapse;
+			  	border: 1px solid #dddddd;
+			  	text-align: center;
+			  	padding: 8px;
+			}
+			th {
+				background-color: black;
+  				color: white;
+			}
+
+			tr:nth-child(even) {
+			 	background-color: #dddddd;
+			}
+		</style>
+		
+	</head>
+	
+  <body>
+
+			<h1>Plants</h1>
+
+			    <table>
+			        <tr>
+			            <th style="width: 150px;">Name</th>
+			        </tr>
+			          <tr th:each="plan : ${plants}">
+			              <td>
+			                  <a th:href="@{/plants/__${plan.id}__}" th:text="${plan.name}"/></a>
+			              </td>
+			          </tr>
+			    </table>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+  </body>
+</html>

@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,7 +43,7 @@ public class PlantController {
         } else {
             // multiple plants found
             model.put("selections", results);
-            return "plants/plantsList";
+            return "plants";
         }
     }
 	
@@ -53,4 +54,10 @@ public class PlantController {
         return mav;
     }
 	
+	@GetMapping("/plants")
+	public String listPlants(Model model) {
+		Collection<Plant> plantsList = plants.findAll();	
+		model.addAttribute("plants", plantsList);
+		return "plants/plantsList";
+	}
 }
