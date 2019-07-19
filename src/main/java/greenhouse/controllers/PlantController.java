@@ -8,30 +8,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
-import greenhouse.models.Strawberry;
-import greenhouse.repositories.StrawberryRepository;
+import greenhouse.models.Plant;
+import greenhouse.repositories.PlantRepository;
 
 @Controller
 public class PlantController {
 
-	private StrawberryRepository strawberries;
+	private PlantRepository plants;
 	
-	public PlantController(StrawberryRepository strawberrys) {
+	public PlantController(PlantRepository plants) {
 		super();
-		this.strawberries = strawberrys;
+		this.plants = plants;
 	}
 	
 	@GetMapping("/plants")
 	public String listPlants(Model model) {
-		Collection<Strawberry> plantsList = strawberries.findAll();	
+		Collection<Plant> plantsList = plants.findAll();	
 		model.addAttribute("plants", plantsList);
 		return "plantList";
 	}
 	
-	@GetMapping("/plants/{strawberryId}")
-    public ModelAndView showStrawberry(@PathVariable("strawberryId") int strawberryId) {
+	@GetMapping("/plants/{plantId}")
+    public ModelAndView showStrawberry(@PathVariable("plantId") int plantId) {
         ModelAndView mav = new ModelAndView("plants/plantDetails");
-        mav.addObject(this.strawberries.findById(strawberryId));
+        mav.addObject(this.plants.findById(plantId));
         return mav;
     }
 	
