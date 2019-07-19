@@ -32,7 +32,6 @@ public class EmailController{
             e.printStackTrace();
             return "Erro ao enviar email.";
         }
-       
         
     }
 

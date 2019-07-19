@@ -17,18 +17,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Plant extends BaseEntity{
 	private static final long serialVersionUID = 1L;
 	
-	public Plant(Sensor idSensor, Type type, Integer humidity, String status, Integer trackmin, Integer trackmax,
-			LocalDateTime dataTime) {
-		super();
-		this.idSensor = idSensor;
-		this.type = type;
-		this.humidity = humidity;
-		this.status = status;
-		this.trackmin = trackmin;
-		this.trackmax = trackmax;
-		this.dataTime = dataTime;
-	}
-	
 	@JsonProperty
 	@ManyToOne
 	@JoinColumn(name = "sensor_id")
@@ -48,10 +36,27 @@ public class Plant extends BaseEntity{
 	@Column(name = "data_time")
 	private LocalDateTime dataTime;
 	
+	public Plant(Sensor idSensor, Type type, Integer humidity, String status, Integer trackmin, Integer trackmax,
+			LocalDateTime dataTime) {
+		super();
+		this.idSensor = idSensor;
+		this.type = type;
+		this.humidity = humidity;
+		this.status = status;
+		this.trackmin = trackmin;
+		this.trackmax = trackmax;
+		this.dataTime = dataTime;
+	}
+	
 	@JsonProperty
 	public Sensor getIdSensor() {return idSensor;}
 	@JsonProperty
 	public void setIdSensor(Sensor idSensor) {this.idSensor = idSensor;}
+	
+	@JsonProperty
+	public Type getType() {return type;}
+	@JsonProperty
+	public void setType(Type type) {this.type = type;}
 	
 	@JsonProperty
 	public Integer getHumidity() {return humidity;}
@@ -76,6 +81,5 @@ public class Plant extends BaseEntity{
 				+ ", trackmin=" + trackmin + ", trackmax=" + trackmax + ", dataTime=" + dataTime + ", getId()="
 				+ getId() + ", isNew()=" + isNew() + "]";
 	}
-	
 		
 }
