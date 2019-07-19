@@ -1,57 +1,25 @@
-DROP TABLE strawberries IF EXISTS;
-DROP TABLE cacti IF EXISTS;
-DROP TABLE mushrooms IF EXISTS;
-DROP TABLE violets IF EXISTS;
-DROP TABLE lavenders IF EXISTS;
+DROP TABLE plants IF EXISTS;
+DROP TABLE types IF EXISTS;
+DROP TABLE sensors IF EXISTS;
 
 
-CREATE TABLE strawberries (
+CREATE TABLE plants (
   id			INTEGER IDENTITY PRIMARY KEY,
-  name      VARCHAR(20),
-  idsensor 		INTEGER,
+  sensor_id 	INTEGER,
+  type_id		INTEGER,
   humidity  	INTEGER,
   status		VARCHAR(30),
   trackmin		INTEGER,
   trackmax		INTEGER,
   dataTime		DATE
 );
-CREATE TABLE cacti (
+ALTER TABLE plants ADD CONSTRAINT fk_plants_sensors FOREIGN KEY (sensor_id) REFERENCES sensors (id);
+ALTER TABLE plants ADD CONSTRAINT fk_plants_types FOREIGN KEY (type_id) REFERENCES types (id);
+
+CREATE TABLE types (
   id			INTEGER IDENTITY PRIMARY KEY,
-  name      VARCHAR(20),
-  idsensor 		INTEGER,
-  humidity  	INTEGER,
-  status		VARCHAR(30),
-  trackmin		INTEGER,
-  trackmax		INTEGER,
-  dataTime		DATE
+  name      	VARCHAR(20)
 );
-CREATE TABLE mushrooms (
-  id			INTEGER IDENTITY PRIMARY KEY,
-  name      VARCHAR(20),
-  idsensor 		INTEGER,
-  humidity  	INTEGER,
-  status		VARCHAR(30),
-  trackmin		INTEGER,
-  trackmax		INTEGER,
-  dataTime		DATE
-);
-CREATE TABLE violets (
-  id			INTEGER IDENTITY PRIMARY KEY,
-  name      VARCHAR(20),
-  idsensor 		INTEGER,
-  humidity  	INTEGER,
-  status		VARCHAR(30),
-  trackmin		INTEGER,
-  trackmax		INTEGER,
-  dataTime		DATE
-);
-CREATE TABLE lavenders (
-  id			INTEGER IDENTITY PRIMARY KEY,
-  name      VARCHAR(20),
-  idsensor 		INTEGER,
-  humidity  	INTEGER,
-  status		VARCHAR(30),
-  trackmin		INTEGER,
-  trackmax		INTEGER,
-  dataTime		DATE
+CREATE TABLE sensors (
+  id			INTEGER IDENTITY PRIMARY KEY
 );
