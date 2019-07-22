@@ -54,10 +54,10 @@
 			            <th style="width: 150px;">Date Time</th>
 			        </tr>
 			          <tr th:each="plan : ${sensor}">
+			              <td th:text="${plan.idSensor.id}"/>
 			              <td>
-			                  <a th:href="@{/sensors/__${plan.idSensor}__}" th:text="${plan.idSensor.id}"/></a>
+			                  <a th:href="@{/plants/__${plan.type.id}__}" th:text="${plan.type.name}"/></a>
 			              </td>
-			              <td th:text="${plan.type.name}"/>
 			              <td th:text="${plan.humidity + '%'}"/>
 			              <td th:text="${plan.status}"/>
 			              <td th:text="${plan.type.trackmin + '% - '  + plan.type.trackmax + '%'}"/>

@@ -55,7 +55,7 @@
 			        </tr>
 			          <tr th:each="plan : ${plant}">
 			              <td>
-			                  <a th:href="@{/sensors/__${plan.idSensor}__}" th:text="${plan.idSensor.id}"/></a>
+			                  <a th:href="@{/sensors/__${plan.idSensor.id}__}" th:text="${plan.idSensor.id}"/></a>
 			              </td>
 			              <td th:text="${plan.type.name}"/>
 			              <td th:text="${plan.humidity + '%'}"/>
