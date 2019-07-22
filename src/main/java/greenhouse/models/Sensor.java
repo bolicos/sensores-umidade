@@ -1,5 +1,6 @@
 package greenhouse.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -11,9 +12,20 @@ public class Sensor extends BaseEntity{
 	public Sensor() {
 		super();
 	}
+
+	@Column(name = "name")
+	private String name;
+	
+	public Sensor(String name) {
+		super();
+		this.name = name;
+	}
+	
+	public String getName() {return name;}
+	public void setName(String name) {this.name = name;}
 	
 	@Override
 	public String toString() {
-		return "Sensor [getId()=" + getId() + ", isNew()=" + isNew() + "]";
+		return "Sensor [name=" + name + ", getId()=" + getId() + ", isNew()=" + isNew() + "]";
 	}
 }

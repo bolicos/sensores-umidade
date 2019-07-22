@@ -7,13 +7,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "types")
 public class Type extends BaseEntity{
+	private static final long serialVersionUID = 1L;
 	
 	public Type() {
 		super();
 	}
 
-	private static final long serialVersionUID = 1L;
-	
 	@Column(name = "name")
 	private String name;
 	

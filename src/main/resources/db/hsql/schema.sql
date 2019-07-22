@@ -8,7 +8,8 @@ CREATE TABLE types (
 );
 
 CREATE TABLE sensors (
-  id			INTEGER IDENTITY PRIMARY KEY
+  id			INTEGER IDENTITY PRIMARY KEY,
+  name      	VARCHAR(20)
 );
 
 CREATE TABLE plants (

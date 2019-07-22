@@ -4,11 +4,11 @@ INSERT INTO types VALUES (3, 'MUSHROOM');
 INSERT INTO types VALUES (4, 'VIOLET');
 INSERT INTO types VALUES (5, 'LAVENDER');
 
-INSERT INTO sensors VALUES (1);
-INSERT INTO sensors VALUES (2);
-INSERT INTO sensors VALUES (3);
-INSERT INTO sensors VALUES (4);
-INSERT INTO sensors VALUES (5);
+INSERT INTO sensors VALUES (1, 'Comparador LM393');
+INSERT INTO sensors VALUES (2, 'Comparador CJMCU');
+INSERT INTO sensors VALUES (3, 'Datasheet SHT20');
+INSERT INTO sensors VALUES (4, 'solo Grove');
+INSERT INTO sensors VALUES (5, 'Comparador LM7805');
 
 INSERT INTO plants VALUES (1, 1, 3, 70, 'Normal', 60, 80, '2013-01-01');
 INSERT INTO plants VALUES (2, 2, 1, 30, 'Normal', 20, 50, '2013-01-02');
