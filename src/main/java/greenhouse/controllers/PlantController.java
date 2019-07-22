@@ -28,7 +28,7 @@ public class PlantController {
 		this.types = types;
 	}
 	
-	@GetMapping("/read")
+	@GetMapping("/plants/read")
 	public String listPlants(Model model) {
 		Collection<Plant> readList = plants.findAll();	
 		model.addAttribute("plants", readList);

@@ -42,15 +42,18 @@
 	
   <body>
 
-			<h1>Types List</h1>
+			<h1>Plant Types</h1>
 			<table>
 						<tr>
 							<th style="width: 150px;">ID</th>
 							<th style="width: 150px;">NAME</th>
+							<th style="width: 150px;">IDEAL TRACK</th>
 						</tr>
 						<tr th:each="typ : ${types}">
 							<td> <p th:text="${typ.id}"></p> </td>
 							<td> <p th:text="${typ.name}"></p> </td>
+							<td> <p th:text="${typ.type.trackmin}"></p> </td>
+							<td> <p th:text="${typ.type.trackmin + '% - '  + typ.type.trackmax + '%'}"></p> </td>
 						</tr>
 			</table>
 			

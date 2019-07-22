@@ -42,7 +42,7 @@
 	
   <body>
 
-			<h1>Readings Plant</h1>
+			<h1>Plant Details</h1>
 
 			    <table>
 			        <tr>
@@ -60,7 +60,7 @@
 			              <td th:text="${plan.type.name}"/>
 			              <td th:text="${plan.humidity + '%'}"/>
 			              <td th:text="${plan.status}"/>
-			              <td th:text="${plan.trackmin + '% - '  + plan.trackmax + '%'}"/>
+			              <td th:text="${plan.type.trackmin + '% - '  + plan.type.trackmax + '%'}"/>
 			              <td th:text="${plan.dataTime}"/>
 			          </tr>
 			    </table>

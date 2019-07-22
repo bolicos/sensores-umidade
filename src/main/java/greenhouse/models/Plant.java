@@ -15,12 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Table(name = "plants")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Plant extends BaseEntity{
-	
-	public Plant() {
-		super();
-	}
-
 	private static final long serialVersionUID = 1L;
+	
+	public Plant() {super();}
 	
 	@JsonProperty
 	@ManyToOne
@@ -30,26 +27,21 @@ public class Plant extends BaseEntity{
 	@ManyToOne
 	@JoinColumn(name = "type_id")
     private Type type;
+	@JsonProperty
 	@Column(name = "humidity")
 	private Integer humidity;
 	@Column(name = "status")
     private String status;
-	@Column(name = "trackmin")
-    private Integer trackmin;
-	@Column(name = "trackmax")
-    private Integer trackmax;
+	
 	@Column(name = "data_time")
 	private LocalDateTime dataTime;
 	
-	public Plant(Sensor idSensor, Type type, Integer humidity, String status, Integer trackmin, Integer trackmax,
-			LocalDateTime dataTime) {
+	public Plant(Sensor idSensor, Type type, Integer humidity, String status, LocalDateTime dataTime) {
 		super();
 		this.idSensor = idSensor;
 		this.type = type;
 		this.humidity = humidity;
 		this.status = status;
-		this.trackmin = trackmin;
-		this.trackmax = trackmax;
 		this.dataTime = dataTime;
 	}
 	
@@ -71,20 +63,15 @@ public class Plant extends BaseEntity{
 	public String getStatus() {return status;}
 	public void setStatus(String status) {this.status = status;}
 	
-	public Integer getTrackmin() {return trackmin;}
-	public void setTrackmin(Integer trackmin) {this.trackmin = trackmin;}
-	
-	public Integer getTrackmax() {return trackmax;}
-	public void setTrackmax(Integer trackmax) {this.trackmax = trackmax;}
-	
+	@JsonProperty
 	public LocalDateTime getDataTime() {return dataTime;}
+	@JsonProperty
 	public void setDataTime(LocalDateTime dataTime) {this.dataTime = dataTime;}
 
 	@Override
 	public String toString() {
 		return "Plant [idSensor=" + idSensor + ", type=" + type + ", humidity=" + humidity + ", status=" + status
-				+ ", trackmin=" + trackmin + ", trackmax=" + trackmax + ", dataTime=" + dataTime + ", getId()="
-				+ getId() + ", isNew()=" + isNew() + "]";
+				+ ", dataTime=" + dataTime + ", getId()=" + getId() + ", isNew()=" + isNew() + "]";
 	}
 		
 }

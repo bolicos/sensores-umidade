@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,20 +19,16 @@ public class PlantRestController {
 	@Autowired
 	private PlantRepository plantRepository;
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Plant> updateType(@PathVariable("id") Integer id,@RequestBody Plant plant) {
-		
-		Plant currentPlant = this.plantRepository.findById(id);
-		if (currentPlant == null) {
-			return new ResponseEntity<Plant>(HttpStatus.NOT_FOUND);
+	@RequestMapping(value = "/read", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Plant> addRead(@RequestBody Plant plant) {
+		try{
+			this.plantRepository.save(plant);
+			return new ResponseEntity<Plant>(plant, HttpStatus.CREATED);
+		} catch (Exception notCreated){
+			return new ResponseEntity<Plant>(plant, HttpStatus.BAD_REQUEST);
 		}
-		currentPlant.setDataTime(plant.getDataTime());
-		currentPlant.setHumidity(plant.getHumidity());
-		currentPlant.setId(plant.getId());
-		currentPlant.setIdSensor(plant.getIdSensor());
 		
-		this.plantRepository.save(currentPlant);
-		return new ResponseEntity<Plant>(currentPlant, HttpStatus.NO_CONTENT);
 	}
 	
 }
+

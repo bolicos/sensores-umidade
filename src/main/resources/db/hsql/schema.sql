@@ -4,7 +4,9 @@ DROP TABLE plants IF EXISTS;
 
 CREATE TABLE types (
   id			INTEGER IDENTITY PRIMARY KEY,
-  name      	VARCHAR(20)
+  name      	VARCHAR(20),
+  trackmin		INTEGER,
+  trackmax		INTEGER
 );
 
 CREATE TABLE sensors (
@@ -18,9 +20,7 @@ CREATE TABLE plants (
   type_id		INTEGER NOT NULL,
   humidity  	INTEGER,
   status		VARCHAR(30),
-  trackmin		INTEGER,
-  trackmax		INTEGER,
-  data_time		DATE
+  data_time		TIMESTAMP
 );
 ALTER TABLE plants ADD CONSTRAINT fk_plants_sensors FOREIGN KEY (sensor_id) REFERENCES sensors (id);
 ALTER TABLE plants ADD CONSTRAINT fk_plants_types FOREIGN KEY (type_id) REFERENCES types (id);
