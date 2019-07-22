@@ -46,12 +46,29 @@
 
 			    <table>
 			        <tr>
-			            <th style="width: 150px;">Name</th>
+			            <th style="width: 150px;">Id</th>
+			            <th style="width: 150px;">Sensor</th>
+			            <th style="width: 150px;">Type</th>
+			            <th style="width: 150px;">Humidity</th>
+			            <th style="width: 150px;">Status</th>
+			            <th style="width: 150px;">Ideal Track</th>
+			            <th style="width: 150px;">Date Time</th>
 			        </tr>
 			          <tr th:each="plan : ${plants}">
 			              <td>
-			                  <a th:href="@{/plants/__${plan.id}__}" th:text="${plan.name}"/></a>
+			                  <a th:href="@{/plants/__${plan.id}__}" th:text="${plan.id}"/></a>
 			              </td>
+			           
+			              <td>
+			                  <a th:href="@{/plants/__${plan.idSensor}__}" th:text="${plan.idSensor.id}"/></a>
+			              </td>
+			              <td>
+			                  <a th:href="@{/plants/__${plan.type}__}" th:text="${plan.type.name}"/></a>
+			              </td>
+			              <td th:text="${plan.humidity + '%'}"/>
+			              <td th:text="${plan.status}"/>
+			              <td th:text="${plan.trackmin + '% - '  + plan.trackmax + '%'}"/>
+			              <td th:text="${plan.dataTime}"/>
 			          </tr>
 			    </table>
 			

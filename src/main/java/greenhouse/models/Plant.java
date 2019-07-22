@@ -15,6 +15,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Table(name = "plants")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Plant extends BaseEntity{
+	
+	public Plant() {
+		super();
+	}
+
 	private static final long serialVersionUID = 1L;
 	
 	@JsonProperty

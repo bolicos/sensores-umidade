@@ -19,7 +19,7 @@ CREATE TABLE plants (
   status		VARCHAR(30),
   trackmin		INTEGER,
   trackmax		INTEGER,
-  dataTime		DATE
+  data_time		DATE
 );
 ALTER TABLE plants ADD CONSTRAINT fk_plants_sensors FOREIGN KEY (sensor_id) REFERENCES sensors (id);
 ALTER TABLE plants ADD CONSTRAINT fk_plants_types FOREIGN KEY (type_id) REFERENCES types (id);

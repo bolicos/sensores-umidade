@@ -7,6 +7,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "types")
 public class Type extends BaseEntity{
+	
+	public Type() {
+		super();
+	}
+
 	private static final long serialVersionUID = 1L;
 	
 	@Column(name = "name")
@@ -19,7 +24,7 @@ public class Type extends BaseEntity{
 	
 	public String getName() {return name;}
 	public void setName(String name) {this.name = name;}
-	
+
 	@Override
 	public String toString() {
 		return "Type [name=" + name + ", getId()=" + getId() + ", isNew()=" + isNew() + "]";
