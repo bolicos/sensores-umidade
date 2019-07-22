@@ -25,9 +25,9 @@ public class Application {
 
 
 	@Bean
-	public SensorService sensorService(RestTemplate restTemplate) {
+	public PlantService sensorService(RestTemplate restTemplate) {
 		log.info(" *** **** Creating a Sensor service");
-		return new SensorService(restTemplate);
+		return new PlantService(restTemplate);
 	}	
 	
 	

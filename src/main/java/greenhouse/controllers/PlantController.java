@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.servlet.ModelAndView;
 
 import greenhouse.models.Plant;
 import greenhouse.models.Sensor;
@@ -50,12 +49,16 @@ public class PlantController {
 	}
 	
 	@GetMapping("/plants/{plantId}")
-    public ModelAndView showPlant(@PathVariable("plantId") int plantId) {
-        ModelAndView mav = new ModelAndView("plantDetails");
-        mav.addObject(this.plants.findAll());
-        return mav;
-    }
-	
-
+	public String showPlant(@PathVariable("plantId") Integer plantId,Model model) {
+		Collection<Plant> plantDetails = plants.findByType(plantId);	
+		model.addAttribute("plant", plantDetails);
+		return "plantDetails";
+	}
+	@GetMapping("/sensors/{sensorId}")
+	public String showSensor(@PathVariable("sensorId") Integer sensorId,Model model) {
+		Collection<Plant> sensorDetails = plants.findBySensor(sensorId);	
+		model.addAttribute("sensor", sensorDetails);
+		return "sensorDetails";
+	}
 	
 }

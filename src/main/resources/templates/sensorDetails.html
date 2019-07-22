@@ -53,7 +53,7 @@
 			            <th style="width: 150px;">Ideal Track</th>
 			            <th style="width: 150px;">Date Time</th>
 			        </tr>
-			          <tr th:each="plan : ${plant}">
+			          <tr th:each="plan : ${sensor}">
 			              <td>
 			                  <a th:href="@{/sensors/__${plan.idSensor}__}" th:text="${plan.idSensor.id}"/></a>
 			              </td>
