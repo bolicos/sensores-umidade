@@ -32,33 +32,33 @@ public class PlantController {
 	public String listPlants(Model model) {
 		Collection<Plant> readList = plants.findAll();	
 		model.addAttribute("plants", readList);
-		return "readList";
+		return "read/readList";
 	}
 	
 	@GetMapping("/sensors")
 	public String listSensors(Model model) {
 		Collection<Sensor> sensorList = sensors.findAll();	
 		model.addAttribute("sensors", sensorList);
-		return "sensorList";
+		return "sensor/sensorList";
 	}
 	@GetMapping("/types")
 	public String listTypes(Model model) {
 		Collection<Type> typeList = types.findAll();	
 		model.addAttribute("types", typeList);
-		return "typeList";
+		return "type/typeList";
 	}
 	
 	@GetMapping("/plants/{plantId}")
 	public String showPlant(@PathVariable("plantId") Integer plantId,Model model) {
 		Collection<Plant> plantDetails = plants.findByType(plantId);	
 		model.addAttribute("plant", plantDetails);
-		return "plantDetails";
+		return "plant/plantDetails";
 	}
 	@GetMapping("/sensors/{sensorId}")
 	public String showSensor(@PathVariable("sensorId") Integer sensorId,Model model) {
 		Collection<Plant> sensorDetails = plants.findBySensor(sensorId);	
 		model.addAttribute("sensor", sensorDetails);
-		return "sensorDetails";
+		return "sensor/sensorDetails";
 	}
 	
 }
