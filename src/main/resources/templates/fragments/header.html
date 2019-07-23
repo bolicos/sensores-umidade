@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head th:fragment="h">
+		<meta http-equiv="Content-Type" content="text/html; charset= UTF-8" />
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>GreenHouse</title>
+		<link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/_images/favicon.ico}" >
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/_css/menu.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/_css/main.css}" />
+	</head>
+	<body>
+
+		<nav th:fragment="menu" id="menu">
+
+			<ul>
+				<li><img th:href="@{/resources/_images/favicon.ico}" alt="Favicon"
+					style="width: 60px; height: 50px;"></li>
+				<li><a href="#" th:href="@{/}" class="active" >Home</a></li>
+				<li><a href="#" th:href="@{/plants}">My Plants</a></li>
+				<li><a href="#" th:href="@{/sensors}">My Sensors</a></li>
+				<li><a href="#" th:href="@{/plants/read}">Recents Reads</a></li>
+				<li><a href="#" th:href="@{/login}"class="sigin">SigIn</a></li>
+			</ul>
+		</nav>
+	</body>
+</html>

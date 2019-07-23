@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head th:replace="fragments/header :: h">
+	
+	</head>
+		<body  style="background-color: lightblue;" >
+			<div th:insert= "fragments/header :: menu">
+			</div>
+			<h2>Welcome</h2>
+					<img class="img-welcome" th:src="@{/resources/_images/co2.jpg}"/>
+		
+		</body>
+</html>

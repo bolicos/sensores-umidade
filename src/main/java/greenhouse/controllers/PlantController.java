@@ -28,8 +28,17 @@ public class PlantController {
 		this.types = types;
 	}
 	
+	@GetMapping("/")
+    public String welcome() {
+        return "welcome";
+    }
+	@GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+	
 	@GetMapping("/plants/read")
-	public String listPlants(Model model) {
+	public String listReadPlants(Model model) {
 		Collection<Plant> readList = plants.findAll();	
 		model.addAttribute("plants", readList);
 		return "read/readList";
@@ -41,8 +50,8 @@ public class PlantController {
 		model.addAttribute("sensors", sensorList);
 		return "sensor/sensorList";
 	}
-	@GetMapping("/types")
-	public String listTypes(Model model) {
+	@GetMapping("/plants")
+	public String listPlants(Model model) {
 		Collection<Type> typeList = types.findAll();	
 		model.addAttribute("types", typeList);
 		return "type/typeList";
