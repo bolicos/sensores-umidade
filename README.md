@@ -13,7 +13,7 @@ You can then access sensores-umidade here: http://localhost:8080
 
 ## Screenshot of the home page
 
-<img width="1042" alt="greenhouse" src="https://github.com/analuciabolico/sensores-umidade/blob/master/src/main/resources/templates/_images/greenhouse.jpg">
+<img width="1042" alt="greenhouse" src="https://github.com/analuciabolico/sensores-umidade/blob/master/src/main/resources/static/resources/_images/home.jpg">
 
 ## In case you find a bug/suggested improvement for Sensores Umidade
 Our issue tracker is available here: https://github.com/analuciabolico/sensores-umidade/issues
