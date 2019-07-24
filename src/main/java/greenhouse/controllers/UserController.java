@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import greenhouse.models.User;
+import greenhouse.repositories.UserRepository;
+
 @Controller
 public class UserController {
 	private static final String VIEWS_USER_CREATE_OR_UPDATE_FORM = "user/createOrUpdateUserForm";
