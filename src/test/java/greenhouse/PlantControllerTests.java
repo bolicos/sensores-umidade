@@ -8,16 +8,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import greenhouse.controllers.PlantController;
 import greenhouse.models.Plant;
 import greenhouse.models.Sensor;
 import greenhouse.models.Type;
+import greenhouse.repositories.PlantRepository;
 
 
 @RunWith(SpringRunner.class)
-//@WithMockUser(roles = "PLANT_ADMIN")
+@WebMvcTest(PlantController.class)
+@WithMockUser(roles = "PLANT_ADMIN")
 public class PlantControllerTests {
 	
 	private static final Integer TEST_PLANT_ID = 1;
@@ -26,6 +32,9 @@ public class PlantControllerTests {
 	
 	@Autowired
 	private MockMvc mockMvc;
+	
+	@MockBean
+	private PlantRepository plants;
 	
 	private Plant plant;
 	private Type type;
