@@ -1,16 +1,16 @@
-package greenhouse;
+package greenhouse.services;
 
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class EmailController{
+@Service
+public class EmailService{
 	
 	@Autowired private JavaMailSender mailSender;
 		
@@ -22,9 +22,7 @@ public class EmailController{
             MimeMessageHelper helper = new MimeMessageHelper( mail );
             helper.setTo( "sensor.humidity@gmail.com" );
             helper.setSubject( "Teste Envio de e-mail" );
-            helper.setText("<h1>Test send email Sensor<h1>"
-            		+ "<p>Access link below  for view:</p>"
-            		+ "<a href=\"http://localhost:8080/\">click here</a>", true);
+            helper.setText("email/email", true);
             mailSender.send(mail);
             
             return "OK";
