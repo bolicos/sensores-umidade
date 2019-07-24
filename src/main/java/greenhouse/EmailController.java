@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EmailController{
 	
 	@Autowired private JavaMailSender mailSender;
-	
+		
 	@RequestMapping(path = "/email-send", method = RequestMethod.GET)
     public String sendMail() {
         try {
