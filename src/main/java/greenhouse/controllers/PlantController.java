@@ -76,7 +76,7 @@ public class PlantController {
 		model.addAttribute("sensor", sensorDetails);
 		return "sensor/sensorDetails";
 	}	
-//------------------------------------------------------------------------------------------CREATE PLANT TYPE
+//----------------------------------------------CREATE PLANT TYPE----------------------------------------------
 	@PostMapping("/plants/new")
     public String processcreateTypePlant(@Valid Type type, BindingResult result) {
         if (result.hasErrors()) {
@@ -94,7 +94,7 @@ public class PlantController {
         return VIEWS_PLANT_CREATE_OR_UPDATE_FORM;
     }
 //------------------------------------------------------------------------------------------===============
-//------------------------------------------------------------------------------------------CREATE SENSOR
+//--------------------------------------------------CREATE SENSOR----------------------------------------------
 	@PostMapping("/sensors/new")
     public String processcreateSensor(@Valid Sensor sensor, BindingResult result) {
         if (result.hasErrors()) {

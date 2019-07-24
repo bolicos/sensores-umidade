@@ -1,8 +1,12 @@
-INSERT INTO types VALUES (1, 'STRAWBERRY', 60, 80);
-INSERT INTO types VALUES (2, 'CACTUS', 20, 50);
-INSERT INTO types VALUES (3, 'MUSHROOM', 80, 90);
-INSERT INTO types VALUES (4, 'VIOLET', 40, 80);
-INSERT INTO types VALUES (5, 'LAVENDER', 20, 30);
+INSERT INTO users VALUES (1, 'MARIA', 'SILVA', 'maria.silva@gmail.com');
+INSERT INTO users VALUES (2, 'JOAO', 'SOUZA', 'joao.souza@gmail.com');
+INSERT INTO users VALUES (3, 'ARIEL', 'SANTOS', 'ariel.santos@gmail.com');
+
+INSERT INTO types VALUES (1, 'STRAWBERRY', 60, 80, 1);
+INSERT INTO types VALUES (2, 'CACTUS', 20, 50, 1);
+INSERT INTO types VALUES (3, 'MUSHROOM', 80, 90, 2);
+INSERT INTO types VALUES (4, 'VIOLET', 40, 80, 3);
+INSERT INTO types VALUES (5, 'LAVENDER', 20, 30, 2);
 
 INSERT INTO sensors VALUES (1, 'Comparador LM393');
 INSERT INTO sensors VALUES (2, 'Comparador CJMCU');
