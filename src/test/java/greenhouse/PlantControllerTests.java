@@ -1,24 +1,52 @@
 package greenhouse;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 
-import greenhouse.controllers.PlantController;
+import greenhouse.models.Plant;
+import greenhouse.models.Sensor;
+import greenhouse.models.Type;
+
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+//@WithMockUser(roles = "PLANT_ADMIN")
 public class PlantControllerTests {
 	
-	@Autowired
-	private PlantController plantController;
+	private static final Integer TEST_PLANT_ID = 1;
+	private static final Integer TEST_TYPE_ID = 1;
+	private static final Integer TEST_SENSOR_ID = 1;
 	
-    @Test
-    public void contexLoads() throws Exception {
-        assertThat(plantController).isNotNull();
-    }
+	@Autowired
+	private MockMvc mockMvc;
+	
+	private Plant plant;
+	private Type type;
+	private Sensor sensor;
+	
+	@Before
+	public void setup() {
+		this.plant = new Plant();
+		this.plant.setId(TEST_PLANT_ID);
+		//this.plant.setIdSensor(TEST_SENSOR_ID);
+		//this.plant.setType(TEST_TYPE_ID);
+		this.plant.setHumidity(70);
+		
+		
+	}
+	@Test
+	public void welcome() throws Exception {
+		mockMvc.perform(get("/"))
+			.andExpect(status().isOk())
+			.andExpect(view().name("welcome"));
+		
+	}
+    
 }
