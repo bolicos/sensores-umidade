@@ -1,6 +1,6 @@
-INSERT INTO users VALUES (1, 'MARIA', 'SILVA', 'maria.silva@gmail.com', 'maria.silva', 'senh@_maria');
-INSERT INTO users VALUES (2, 'JOAO', 'SOUZA', 'joao.souza@gmail.com', 'joao.souza', 'senh@joao');
-INSERT INTO users VALUES (3, 'ARIEL', 'SANTOS', 'ariel.santos@gmail.com', 'senh@ariel');
+INSERT INTO users VALUES ('maria.silva', 'senh@_maria', 'MARIA', 'SILVA', 'maria.silva@gmail.com', true);
+INSERT INTO users VALUES ('joao.souza', 'senh@joao', 'JOAO', 'SOUZA', 'joao.souza@gmail.com', true);
+INSERT INTO users VALUES ('ariel.santos', 'senh@ariel', 'ARIEL', 'SANTOS', 'ariel.santos@gmail.com', true);
 
 INSERT INTO types VALUES (1, 'STRAWBERRY', 60, 80);
 INSERT INTO types VALUES (2, 'CACTUS', 20, 50);
@@ -24,21 +24,21 @@ INSERT INTO plants VALUES (13, 3);
 INSERT INTO plants VALUES (14, 4);
 INSERT INTO plants VALUES (15, 5);
 
-INSERT INTO sensors VALUES (1, 'Comparador LM393', 1, 1);
-INSERT INTO sensors VALUES (2, 'Comparador CJMCU', 1, 2);
-INSERT INTO sensors VALUES (3, 'Datasheet SHT20', 1, 3);
-INSERT INTO sensors VALUES (4, 'solo Grove', 1, 4);
-INSERT INTO sensors VALUES (5, 'Comparador LM7805', 1, 5);
-INSERT INTO sensors VALUES (6, 'Comparador LM393', 2, 1);
-INSERT INTO sensors VALUES (7, 'Comparador CJMCU', 2, 2);
-INSERT INTO sensors VALUES (8, 'Datasheet SHT20', 2, 3);
-INSERT INTO sensors VALUES (9, 'solo Grove', 2, 4);
-INSERT INTO sensors VALUES (10, 'Comparador LM7805', 2, 5);
-INSERT INTO sensors VALUES (11, 'Comparador LM393', 3, 1);
-INSERT INTO sensors VALUES (12, 'Comparador CJMCU', 3, 2);
-INSERT INTO sensors VALUES (13, 'Datasheet SHT20', 3, 3);
-INSERT INTO sensors VALUES (14, 'solo Grove', 3, 4);
-INSERT INTO sensors VALUES (15, 'Comparador LM7805', 3, 5);
+INSERT INTO sensors VALUES (1, 'Comparador LM393', 'maria.silva', 1);
+INSERT INTO sensors VALUES (2, 'Comparador CJMCU', 'maria.silva', 2);
+INSERT INTO sensors VALUES (3, 'Datasheet SHT20', 'maria.silva', 3);
+INSERT INTO sensors VALUES (4, 'solo Grove', 'maria.silva', 4);
+INSERT INTO sensors VALUES (5, 'Comparador LM7805', 'maria.silva', 5);
+INSERT INTO sensors VALUES (6, 'Comparador LM393', 'joao.souza', 1);
+INSERT INTO sensors VALUES (7, 'Comparador CJMCU', 'joao.souza', 2);
+INSERT INTO sensors VALUES (8, 'Datasheet SHT20', 'joao.souza', 3);
+INSERT INTO sensors VALUES (9, 'solo Grove', 'joao.souza', 4);
+INSERT INTO sensors VALUES (10, 'Comparador LM7805', 'joao.souza', 5);
+INSERT INTO sensors VALUES (11, 'Comparador LM393', 'ariel.santos', 1);
+INSERT INTO sensors VALUES (12, 'Comparador CJMCU', 'ariel.santos', 2);
+INSERT INTO sensors VALUES (13, 'Datasheet SHT20', 'ariel.santos', 3);
+INSERT INTO sensors VALUES (14, 'solo Grove', 'ariel.santos', 4);
+INSERT INTO sensors VALUES (15, 'Comparador LM7805', 'ariel.santos', 5);
 
 INSERT INTO reads VALUES (1, 1, 70, true, '2019-07-10 07:00:00');
 INSERT INTO reads VALUES (2, 2, 30, true, '2019-07-10 07:00:00');
@@ -71,3 +71,7 @@ INSERT INTO reads VALUES (27, 12, 10, false, '2019-07-10 07:00:00');
 INSERT INTO reads VALUES (28, 13, 70, false, '2019-07-10 07:00:00');
 INSERT INTO reads VALUES (29, 14, 30, false, '2019-07-10 07:00:00');
 INSERT INTO reads VALUES (30, 15, 10, false, '2019-07-10 07:00:00');
+
+INSERT INTO roles VALUES (1, 'maria.silva', 'PLANT_ADMIN');
+INSERT INTO roles VALUES (2, 'joao.souza', 'PLANT_ADMIN');
+INSERT INTO roles VALUES (3, 'ariel.santos', 'PLANT_ADMIN');
