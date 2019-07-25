@@ -47,24 +47,24 @@ public class UserController {
             return VIEWS_USER_CREATE_OR_UPDATE_FORM;
         } else {
             this.users.save(user);
-            return "redirect:/owners/" + user.getId();
+            return "redirect:/users/" + user.getUserName();
         }
     }
 //--------------------------------------------------------------------------------------
 //-------------------------------------EDIT USER----------------------------------------
-    @GetMapping("/users/{userId}/edit")
-    public String initUpdateUserForm(@PathVariable("userId") Integer userId, Model model) {
-    	User user = this.users.findById(userId);
+    @GetMapping("/users/{userName}/edit")
+    public String initUpdateUserForm(@PathVariable("userName") String userName, Model model) {
+    	User user = this.users.findById(userName);
         model.addAttribute(user);
         return VIEWS_USER_CREATE_OR_UPDATE_FORM;
     }
 
-    @PostMapping("/owners/{ownerId}/edit")
-    public String processUpdateOwnerForm(@Valid User user, BindingResult result, @PathVariable("userId") Integer userId) {
+    @PostMapping("/users/{userName}/edit")
+    public String processUpdateOwnerForm(@Valid User user, BindingResult result, @PathVariable("userId") String userName) {
         if (result.hasErrors()) {
             return VIEWS_USER_CREATE_OR_UPDATE_FORM;
         } else {
-        	user.setId(userId);
+        	user.setUserName(userName);
             this.users.save(user);
             return "redirect:/users/{userId}";
         }
@@ -73,10 +73,10 @@ public class UserController {
     
     
     
-    @GetMapping("/users/{userId}")
-    public ModelAndView showUser(@PathVariable("userId") int userId) {
+    @GetMapping("/users/{userName}")
+    public ModelAndView showUser(@PathVariable("userId") String userName) {
         ModelAndView mav = new ModelAndView("users/userDetails");
-        mav.addObject(this.users.findById(userId));
+        mav.addObject(this.users.findById(userName));
         return mav;
     }
 }
