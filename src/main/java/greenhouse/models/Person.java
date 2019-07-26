@@ -21,5 +21,5 @@ public class Person extends BaseEntity{
 
     public String getLastName() {return this.lastName;}
     public void setLastName(String lastName) {this.lastName = lastName;}
-    
+	
 }

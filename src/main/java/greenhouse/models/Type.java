@@ -2,8 +2,6 @@ package greenhouse.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,15 +11,12 @@ public class Type extends BaseEntity{
 	
 	public Type() {super();}
 
-	@Column(name = "name")
+	@Column
 	private String name;
-	@Column(name = "trackmin")
+	@Column
     private Integer trackmin;
-	@Column(name = "trackmax")
+	@Column
     private Integer trackmax;
-	@ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 	
 	public Type(String name, Integer trackmin,Integer trackmax) {
 		super();
@@ -38,15 +33,10 @@ public class Type extends BaseEntity{
 
 	public Integer getTrackmax() {return trackmax;}
 	public void setTrackmax(Integer trackmax) {this.trackmax = trackmax;}
-	
-	public User getUser() {return this.user;}
-    protected void setUser(User user) {this.user = user;}
     
 	@Override
 	public String toString() {
 		return "Type [name=" + name + ", trackmin=" + trackmin + ", trackmax=" + trackmax + ", getId()=" + getId()
 				+ ", isNew()=" + isNew() + "]";
 	}
-	
-
 }

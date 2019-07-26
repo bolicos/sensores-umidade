@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import greenhouse.controllers.PlantController;
-import greenhouse.models.Plant;
+import greenhouse.models.Read;
 import greenhouse.models.Sensor;
 import greenhouse.models.Type;
 import greenhouse.repositories.PlantRepository;
@@ -36,19 +36,17 @@ public class PlantControllerTests {
 	@MockBean
 	private PlantRepository plants;
 	
-	private Plant plant;
+	private Read read;
 	private Type type;
 	private Sensor sensor;
 	
 	@Before
 	public void setup() {
-		this.plant = new Plant();
-		this.plant.setId(TEST_PLANT_ID);
+		this.read = new Read();
+		this.read.setId(TEST_PLANT_ID);
 		//this.plant.setIdSensor(TEST_SENSOR_ID);
 		//this.plant.setType(TEST_TYPE_ID);
-		this.plant.setHumidity(70);
-		
-		
+		this.read.setHumidity(70);
 	}
 	@Test
 	public void welcome() throws Exception {
