@@ -34,6 +34,7 @@ public class User {
     @NotEmpty
     private String password;
 	
+	@Column(name = "passwrd_confirm")
 	private String passwordConfirm;
 	
 	@Column(name = "first_name")

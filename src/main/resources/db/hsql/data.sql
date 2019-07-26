@@ -1,7 +1,7 @@
-INSERT INTO users VALUES ('maria.silva', 'senh@_maria', 'MARIA', 'SILVA', 'maria.silva@gmail.com', true, 1);
-INSERT INTO users VALUES ('joao.souza', 'senh@joao', 'JOAO', 'SOUZA', 'joao.souza@gmail.com', true, 1);
-INSERT INTO users VALUES ('ariel.santos', 'senh@ariel', 'ARIEL', 'SANTOS', 'ariel.santos@gmail.com', true, 1);
-INSERT INTO users VALUES ('admin.admin', 'senh@_admin', 'ADMIN', 'ADMIN', 'admin.admin@gmail.com', true, 2);
+INSERT INTO users VALUES ('maria.silva', 'senh@_maria', 'senh@_maria', 'MARIA', 'SILVA', 'maria.silva@gmail.com', true, 1);
+INSERT INTO users VALUES ('joao.souza', 'senh@joao', 'senh@joao', 'JOAO', 'SOUZA', 'joao.souza@gmail.com', true, 1);
+INSERT INTO users VALUES ('ariel.santos', 'senh@ariel', 'senh@ariel', 'ARIEL', 'SANTOS', 'ariel.santos@gmail.com', true, 1);
+INSERT INTO users VALUES ('admin.admin', 'senh@_admin', 'senh@_admin', 'ADMIN', 'ADMIN', 'admin.admin@gmail.com', true, 2);
 
 INSERT INTO types VALUES (1, 'STRAWBERRY', 60, 80);
 INSERT INTO types VALUES (2, 'CACTUS', 20, 50);
