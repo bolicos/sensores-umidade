@@ -1,22 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
-	<head th:replace="fragments/header :: h"></head>
+<html xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{fragments/layout :: layout (~{::body},'sensors')}">
+
+<head></head>
+
+<body>
+
+	<h2>Sensors</h2>
 	
-  <body>
-  	<div th:insert= "fragments/header :: menu"></div>
-		<div th:insert= "fragments/header :: menu"></div>
-			<h1>Sensors List</h1>
-			<table>
-						<tr>
-							<th style="width: 150px;">ID</th>
-							<th style="width: 150px;">NAME</th>
-						</tr>
-						<tr th:each="sen : ${sensors}">
-							<td> <p th:text="${sen.id}"></p> </td>
-							<td> <p th:text="${sen.name}"></p> </td>
-						</tr>
-			</table>
-			
-			
-  </body>
+	<table id="sensors" class="table table-striped">
+		<thead>
+		<tr>
+			<th style="width: 150px;">ID</th>
+			<th style="width: 150px;">NAME</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="sen : ${sensors}">
+			<td>
+				<p th:text="${sen.id}"></p>
+			</td>
+			<td>
+				<p th:text="${sen.name}"></p>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+</body>
 </html>
+  

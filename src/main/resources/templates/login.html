@@ -2,15 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
 xmlns:th="https://www.thymeleaf.org"
 xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
->
+th:replace="~{fragments/layout :: layout (~{::body},'login')}">
 
-    <head th:replace= "fragments/header :: h">
+    <head>
         <title>Spring Security Example </title>
     </head>
     
     <body style="padding: 100px">
-    
-    <div th:insert= "fragments/header :: menu"></div>
     
 	
     <div th:if="${#httpServletRequest.remoteUser != null}">
