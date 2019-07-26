@@ -9,8 +9,10 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.beans.support.MutableSortDefinition;
@@ -20,18 +22,18 @@ import org.springframework.beans.support.PropertyComparator;
 @Table(name = "users")
 public class User {
 	
-	public User() {
-		super();
-	}
+	public User() {super();} //Constructor Default
 	
 	@Id
 	@Column(name = "username")
     @NotEmpty
-    private String userName;
+    private String username;
 	
 	@Column
     @NotEmpty
     private String password;
+	
+	private String passwordConfirm;
 	
 	@Column(name = "first_name")
     @NotEmpty
@@ -48,17 +50,21 @@ public class User {
     @Column
     private Boolean enabled;
     
-    @OneToMany
+    @ManyToMany
     private Set<Role> roles;
     
 	@OneToMany
 	private Set<Sensor> sensors;
 	
-	public String getUserName() {return userName;}
-	public void setUserName(String userName) {this.userName = userName;}
+	public String getUsername() {return username;}
+	public void setUsername(String username) {this.username = username;}
 	
 	public String getPassword() {return password;}
 	public void setPassword(String password) {this.password = password;}
+	
+	@Transient
+    public String getPasswordConfirm() {return passwordConfirm;}
+    public void setPasswordConfirm(String passwordConfirm) {this.passwordConfirm = passwordConfirm;}
 	
 	public String getFirstName() {return this.firstName;}
     public void setFirstName(String firstName) {this.firstName = firstName;}
@@ -121,7 +127,7 @@ public class User {
 //------------------------------END------------------------------
 	@Override
 	public String toString() {
-		return "User [userName=" + userName + ", password=" + password + ", firstName=" + firstName + ", lastName="
+		return "User [username=" + username + ", password=" + password + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", email=" + email + ", enabled=" + enabled + ", roles=" + roles + ", sensors=" + sensors
 				+ "]";
 	}
