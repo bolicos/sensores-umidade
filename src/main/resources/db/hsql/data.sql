@@ -1,6 +1,7 @@
-INSERT INTO users VALUES ('maria.silva', 'senh@_maria', 'MARIA', 'SILVA', 'maria.silva@gmail.com', true);
-INSERT INTO users VALUES ('joao.souza', 'senh@joao', 'JOAO', 'SOUZA', 'joao.souza@gmail.com', true);
-INSERT INTO users VALUES ('ariel.santos', 'senh@ariel', 'ARIEL', 'SANTOS', 'ariel.santos@gmail.com', true);
+INSERT INTO users VALUES ('maria.silva', 'senh@_maria', 'MARIA', 'SILVA', 'maria.silva@gmail.com', true, 1);
+INSERT INTO users VALUES ('joao.souza', 'senh@joao', 'JOAO', 'SOUZA', 'joao.souza@gmail.com', true, 1);
+INSERT INTO users VALUES ('ariel.santos', 'senh@ariel', 'ARIEL', 'SANTOS', 'ariel.santos@gmail.com', true, 1);
+INSERT INTO users VALUES ('admin.admin', 'senh@_admin', 'ADMIN', 'ADMIN', 'admin.admin@gmail.com', true, 2);
 
 INSERT INTO types VALUES (1, 'STRAWBERRY', 60, 80);
 INSERT INTO types VALUES (2, 'CACTUS', 20, 50);
@@ -72,6 +73,5 @@ INSERT INTO reads VALUES (28, 13, 70, false, '2019-07-10 07:00:00');
 INSERT INTO reads VALUES (29, 14, 30, false, '2019-07-10 07:00:00');
 INSERT INTO reads VALUES (30, 15, 10, false, '2019-07-10 07:00:00');
 
-INSERT INTO roles VALUES (1, 'maria.silva', 'PLANT_ADMIN');
-INSERT INTO roles VALUES (2, 'joao.souza', 'PLANT_ADMIN');
-INSERT INTO roles VALUES (3, 'ariel.santos', 'PLANT_ADMIN');
+INSERT INTO roles VALUES (1, 'USER_BASIC');
+INSERT INTO roles VALUES (2, 'USER_ADMIN');

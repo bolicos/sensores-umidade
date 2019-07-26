@@ -34,15 +34,6 @@ public class PlantController {
 		this.types = types;
 	}
 	
-	@GetMapping("/")
-    public String welcome() {
-        return "welcome";
-    }
-	@GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-	
 	@GetMapping("/plants/read")
 	public String listReadPlants(Model model) {
 		Collection<Plant> readList = plants.findAll();	

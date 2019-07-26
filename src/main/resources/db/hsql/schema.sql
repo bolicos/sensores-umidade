@@ -1,18 +1,25 @@
+DROP TABLE roles IF EXISTS;
 DROP TABLE users IF EXISTS;
 DROP TABLE types IF EXISTS;
 DROP TABLE sensors IF EXISTS;
 DROP TABLE plants IF EXISTS;
 DROP TABLE reads IF EXISTS;
 
+CREATE TABLE roles (
+  id              INTEGER IDENTITY PRIMARY KEY,
+  role            VARCHAR(20) NOT NULL
+);
 CREATE TABLE users (
   username			VARCHAR(20) NOT NULL,
   password			VARCHAR(30) NOT NULL,
   first_name      	VARCHAR(50) NOT NULL,
   last_name			VARCHAR(50) NOT NULL,
   email				VARCHAR(30) NOT NULL,
-  enabled   		BOOLEAN DEFAULT TRUE NOT NULL ,
+  enabled   		BOOLEAN DEFAULT TRUE NOT NULL,
+  role_id			INTEGER,
   PRIMARY KEY (username)
 );
+
 CREATE TABLE types (
   id				INTEGER IDENTITY PRIMARY KEY,
   name      		VARCHAR(20),
@@ -43,11 +50,3 @@ CREATE TABLE reads (
  date_time			TIMESTAMP NOT NULL
 );
 ALTER TABLE reads ADD CONSTRAINT fk_reads_sensors FOREIGN KEY (sensor_id) REFERENCES sensors (id);
-
-CREATE TABLE roles (
-  id              INTEGER IDENTITY PRIMARY KEY,
-  username        VARCHAR(20) NOT NULL,
-  role            VARCHAR(20) NOT NULL
-);
-ALTER TABLE roles ADD CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username);
-CREATE INDEX fk_username_idx ON roles (username);
