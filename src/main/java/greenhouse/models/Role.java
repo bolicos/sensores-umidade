@@ -9,8 +9,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "roles" ,uniqueConstraints = @UniqueConstraint(columnNames = {"id", "role"}))
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Role extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 

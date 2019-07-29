@@ -9,23 +9,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import greenhouse.models.Plant;
-import greenhouse.repositories.PlantRepository;
+import greenhouse.models.Read;
+import greenhouse.repositories.ReadRepository;
+import greenhouse.services.ReadService;
 
 @RestController
 @RequestMapping("/plants")
-public class PlantRestController {
+public class ReadRestController {
 	
 	@Autowired
-	private PlantRepository plantRepository;
+	private ReadRepository readRepository;
+	
+	@Autowired
+	private ReadService readservice;
 
 	@RequestMapping(value = "/read", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Plant> addRead(@RequestBody Plant plant) {
+	public ResponseEntity<Read> addRead(@RequestBody Read read) {
 		try{
-			this.plantRepository.save(plant);
-			return new ResponseEntity<Plant>(plant, HttpStatus.CREATED);
+			
+			this.readRepository.save(this.readservice.saveRead(read));
+			return new ResponseEntity<Read>(read, HttpStatus.CREATED);
 		} catch (Exception notCreated){
-			return new ResponseEntity<Plant>(plant, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Read>(read, HttpStatus.BAD_REQUEST);
 		}
 		
 	}

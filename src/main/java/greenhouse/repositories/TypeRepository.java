@@ -10,7 +10,9 @@ import greenhouse.models.Type;
 public interface TypeRepository extends Repository<Type, Integer>{
 	Collection<Type> findAll() throws DataAccessException;
 	Type findById(Integer id) throws DataAccessException;
+	public Type findById(Type type) throws DataAccessException;
 	
 	public void save(Type type) throws DataAccessException;
 	public void delete(Type type) throws DataAccessException;
+	
 }

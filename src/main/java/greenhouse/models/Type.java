@@ -4,8 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "types")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Type extends BaseEntity{
 	private static final long serialVersionUID = 1L;
 	

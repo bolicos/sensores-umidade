@@ -10,7 +10,9 @@ import greenhouse.models.Sensor;
 public interface SensorRepository extends Repository<Sensor, Integer>{
 	Collection<Sensor> findAll() throws DataAccessException;
 	Sensor findById(Integer id) throws DataAccessException;
+	Sensor findById(Sensor idSensor) throws DataAccessException;
 	
 	public void save(Sensor sensor) throws DataAccessException;
 	public void delete(Sensor sensor) throws DataAccessException;
+	
 }

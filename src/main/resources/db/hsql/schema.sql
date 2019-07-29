@@ -47,7 +47,7 @@ CREATE TABLE reads (
  id					INTEGER IDENTITY PRIMARY KEY,
  sensor_id			INTEGER NOT NULL,
  humidity			INTEGER NOT NULL,
- status				BOOLEAN NOT NULL,
+ status				BOOLEAN,
  date_time			TIMESTAMP NOT NULL
 );
 ALTER TABLE reads ADD CONSTRAINT fk_reads_sensors FOREIGN KEY (sensor_id) REFERENCES sensors (id);

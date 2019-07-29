@@ -19,10 +19,10 @@ public class Read extends BaseEntity{
 	
 	public Read() {super();}
 	
-	@JsonProperty
+	@JsonProperty	
 	@ManyToOne
 	@JoinColumn(name = "sensor_id")
-    private Sensor idSensor;
+	private Sensor idSensor;
 	
 	@JsonProperty
 	@Column(name = "humidity")

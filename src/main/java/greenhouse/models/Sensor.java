@@ -8,9 +8,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "sensors")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Sensor extends BaseEntity{
 	private static final long serialVersionUID = 1L;
 	
@@ -25,6 +29,7 @@ public class Sensor extends BaseEntity{
     private Plant plant;
 	
 	@OneToMany
+	@Transient
     private Set<Read> reads;
 
 	@Column(name = "name")
@@ -42,6 +47,10 @@ public class Sensor extends BaseEntity{
 	public Set<Read> getReads() {return reads;}
 	public void setReads(Set<Read> reads) {this.reads = reads;}
 	
-	
+	@Override
+	public String toString() {
+		return "Sensor [user=" + user + ", plant=" + plant + ", reads=" + reads + ", name=" + name + ", getId()="
+				+ getId() + ", isNew()=" + isNew() + "]";
+	}
 	
 }
