@@ -29,7 +29,7 @@ public class User {
 	public User() {super();} //Constructor Default
 	
 	@Id
-	@Column(name = "username")
+	@Column(name = "username", unique = true)
     @NotEmpty
     private String username;
 	

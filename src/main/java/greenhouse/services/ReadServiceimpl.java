@@ -10,7 +10,6 @@ import greenhouse.repositories.SensorRepository;
 
 @Service
 public class ReadServiceimpl implements ReadService{
-	
 	private SensorRepository sensorrepository;
 	private Sensor sensor;
 
