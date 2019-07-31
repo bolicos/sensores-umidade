@@ -1,10 +1,10 @@
 INSERT INTO roles VALUES (1, 'USER_BASIC');
 INSERT INTO roles VALUES (2, 'USER_ADMIN');
 
-INSERT INTO users VALUES ('maria.silva', 'senh@_maria', 'senh@_maria', 'MARIA', 'SILVA', 'maria.silva@gmail.com', true, 1);
-INSERT INTO users VALUES ('joao.souza', 'senh@joao', 'senh@joao', 'JOAO', 'SOUZA', 'joao.souza@gmail.com', true, 1);
-INSERT INTO users VALUES ('ariel.santos', 'senh@ariel', 'senh@ariel', 'ARIEL', 'SANTOS', 'ariel.santos@gmail.com', true, 1);
-INSERT INTO users VALUES ('admin.admin', 'senh@_admin', 'senh@_admin', 'ADMIN', 'ADMIN', 'admin.admin@gmail.com', true, 2);
+INSERT INTO users VALUES ('maria.silva', '$2a$10$aKKR1si9514Dkq9YpWNmSurXpUbasQSM/qcKJM6brK3iUPJfXVNXi', 'MARIA', 'SILVA', 'maria.silva@gmail.com', true, 1);
+INSERT INTO users VALUES ('joao.souza', '$2a$10$k.JdMaZyS1UZDhU7tSsZgO3huBoOWeOxMbtXiXnCI9DG7PMoRCH.O', 'JOAO', 'SOUZA', 'joao.souza@gmail.com', true, 1);
+INSERT INTO users VALUES ('ariel.santos', 'senh@ariel', 'ARIEL', 'SANTOS', 'ariel.santos@gmail.com', true, 1);
+INSERT INTO users VALUES ('admin.admin', 'senh@_admin','ADMIN', 'ADMIN', 'admin.admin@gmail.com', true, 2);
 
 INSERT INTO types VALUES (1, 'STRAWBERRY', 60, 80);
 INSERT INTO types VALUES (2, 'CACTUS', 20, 50);

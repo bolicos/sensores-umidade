@@ -1,5 +1,6 @@
 package greenhouse.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -8,10 +9,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -27,27 +30,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "users")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User implements UserDetails{
-	public User(User user) {
-		super();
-		this.username = user.getUsername();
-		this.password = user.getPassword();
-		this.passwordConfirm = user.getPasswordConfirm();
-		this.firstName = user.getFirstName();
-		this.lastName = user.getLastName();
-		this.email = user.getEmail();
-		this.enabled = user.getEnabled();
-		this.roles = user.getRoles();
-		this.sensors = user.getSensors();
-	}
-
-
+public class User implements UserDetails, Serializable{
 	private static final long serialVersionUID = 1L;
 
 	public User() {super();} //Constructor Default
 	
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "username", unique = true)
     @NotEmpty
     private String username;
@@ -56,7 +46,7 @@ public class User implements UserDetails{
     @NotEmpty
     private String password;
 	
-	@Column(name = "password_confirm")
+	@Transient
 	private String passwordConfirm;
 	
 	@Column(name = "first_name")
@@ -74,21 +64,25 @@ public class User implements UserDetails{
     @Column
     private Boolean enabled;
     
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "role_id")
-    private Role roles;
+    @ManyToMany
+	@JoinTable( 
+	        name = "fk_users_roles", 
+	        joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "username"), 
+	        inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")) 
+    private List<Role> roles;
     
 	@OneToMany
 	private Collection<Sensor> sensors;
 	
+	@Override
 	public String getUsername() {return username;}
 	public void setUsername(String username) {this.username = username;}
 	
+	@Override
 	public String getPassword() {return password;}
 	public void setPassword(String password) {this.password = password;}
 	
-	@Transient
-    public String getPasswordConfirm() {return passwordConfirm;}
+    public String getPasswordConfirm() {return this.passwordConfirm;}
     public void setPasswordConfirm(String passwordConfirm) {this.passwordConfirm = passwordConfirm;}
 	
 	public String getFirstName() {return this.firstName;}
@@ -104,8 +98,8 @@ public class User implements UserDetails{
     public void setEnabled(Boolean enabled) {this.enabled = enabled;}
 	
  //-------------------------ROLES OF USER-------------------------
-    public Role getRoles() {return roles;}
-    public void setRoles(Role roles) {this.roles = roles;}
+    public List<Role> getRoles() {return roles;}
+    public void setRoles(List<Role> roles) {this.roles = roles;}
     
 //    public void addRole(String roleName) {
 //        if(this.roles == null) {this.roles = new HashSet<Role>();}
@@ -151,10 +145,11 @@ public class User implements UserDetails{
 //------------------------------END------------------------------
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", email=" + email + ", enabled=" + enabled + ", roles=" + roles + ", sensors=" + sensors
-				+ "]";
+		return "User [username=" + username + ", password=" + password + ", passwordConfirm=" + passwordConfirm
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", enabled=" + enabled
+				+ ", roles=" + roles + ", sensors=" + sensors + "]";
 	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {return (Collection<? extends GrantedAuthority>) this.roles;}
 	@Override
@@ -167,28 +162,29 @@ public class User implements UserDetails{
 	public boolean isEnabled() {return true;}
 	
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
-		return result;
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((username == null) ? 0 : username.hashCode());
+//		return result;
+//	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
-			return false;
-		return true;
-	}
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		User other = (User) obj;
+//		if (username == null) {
+//			if (other.username != null)
+//				return false;
+//		} else if (!username.equals(other.username))
+//			return false;
+//		return true;
+//	}
+	
 }
