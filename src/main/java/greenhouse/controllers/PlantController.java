@@ -21,7 +21,6 @@ import greenhouse.repositories.TypeRepository;
 @Controller
 public class PlantController {
 	
-	private static final String VIEWS_PLANT_CREATE_OR_UPDATE_FORM = "plant/createOrUpdatePlantForm";
 	private static final String VIEWS_SENSOR_CREATE_OR_UPDATE_FORM = "sensor/createOrUpdateSensortForm";
 	private PlantRepository plants;
 	private SensorRepository sensors;
@@ -54,23 +53,7 @@ public class PlantController {
 		return "type/typeList";
 	}
 	
-//----------------------------------------------CREATE PLANT TYPE----------------------------------------------
-	@PostMapping("/plants/new")
-    public String processcreateTypePlant(@Valid Type type, BindingResult result) {
-        if (result.hasErrors()) {
-            return VIEWS_PLANT_CREATE_OR_UPDATE_FORM;
-        } else {
-            this.types.save(type);
-            return "redirect:/plants/{plantId}";
-        }
-    }
-	
-	@GetMapping("/plants/new")
-    public String initcreateTypePlant(Map<String, Object> model) {
-		Type type = new Type();
-        model.put("type", type);
-        return VIEWS_PLANT_CREATE_OR_UPDATE_FORM;
-    }
+
 //------------------------------------------------------------------------------------------===============
 //--------------------------------------------------CREATE SENSOR----------------------------------------------
 	@PostMapping("/sensors/new")

@@ -20,6 +20,7 @@ CREATE TABLE users (
   role_id			INTEGER,
   PRIMARY KEY (username)
 );
+ALTER TABLE users ADD CONSTRAINT fk_users_roles FOREIGN KEY (role_id) REFERENCES roles (id);
 
 CREATE TABLE types (
   id				INTEGER IDENTITY PRIMARY KEY,

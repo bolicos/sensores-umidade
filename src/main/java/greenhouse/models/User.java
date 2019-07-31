@@ -1,16 +1,17 @@
 package greenhouse.models;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -18,15 +19,33 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "users")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
-	
+public class User implements UserDetails{
+	public User(User user) {
+		super();
+		this.username = user.getUsername();
+		this.password = user.getPassword();
+		this.passwordConfirm = user.getPasswordConfirm();
+		this.firstName = user.getFirstName();
+		this.lastName = user.getLastName();
+		this.email = user.getEmail();
+		this.enabled = user.getEnabled();
+		this.roles = user.getRoles();
+		this.sensors = user.getSensors();
+	}
+
+
+	private static final long serialVersionUID = 1L;
+
 	public User() {super();} //Constructor Default
+	
 	
 	@Id
 	@Column(name = "username", unique = true)
@@ -55,12 +74,12 @@ public class User {
     @Column
     private Boolean enabled;
     
-    @ManyToMany
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
-    private Set<Role> roles;
+    private Role roles;
     
 	@OneToMany
-	private Set<Sensor> sensors;
+	private Collection<Sensor> sensors;
 	
 	public String getUsername() {return username;}
 	public void setUsername(String username) {this.username = username;}
@@ -85,25 +104,24 @@ public class User {
     public void setEnabled(Boolean enabled) {this.enabled = enabled;}
 	
  //-------------------------ROLES OF USER-------------------------
-    public Set<Role> getRoles() {return roles;}
-    public void setRoles(Set<Role> roles) {this.roles = roles;}
+    public Role getRoles() {return roles;}
+    public void setRoles(Role roles) {this.roles = roles;}
     
-    public void addRole(String roleName) {
-        if(this.roles == null) {
-            this.roles = new HashSet<>();
-        }
-        Role role = new Role();
-        role.setName(roleName);
-        this.roles.add(role);
-    }
+//    public void addRole(String roleName) {
+//        if(this.roles == null) {this.roles = new HashSet<Role>();}
+//        Role role = new Role();
+//        role.setName(roleName);
+//        this.roles.add(role);
+//    }
+    
   //------------------------------END------------------------------   
   
   //-------------------------SENSORS OF USER-------------------------
-	protected Set<Sensor> getSensorsInternal() {//INTERNAL
-        if (this.sensors == null) {this.sensors = new HashSet<>();}
+	protected Collection<Sensor> getSensorsInternal() {//INTERNAL
+        if (this.sensors == null) {this.sensors = new HashSet<Sensor>();}
         return this.sensors;
     }
-	protected void setSensorsInternal(Set<Sensor> sensors) {this.sensors = sensors;}//INTERNAL
+	protected void setSensorsInternal(Collection<Sensor> sensors) {this.sensors = sensors;}//INTERNAL
 	
 	public List<Sensor> getSensors() {
         List<Sensor> sortedSensors = new ArrayList<>(getSensorsInternal());
@@ -137,5 +155,40 @@ public class User {
 				+ lastName + ", email=" + email + ", enabled=" + enabled + ", roles=" + roles + ", sensors=" + sensors
 				+ "]";
 	}
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {return (Collection<? extends GrantedAuthority>) this.roles;}
+	@Override
+	public boolean isAccountNonExpired() {return true;}
+	@Override
+	public boolean isAccountNonLocked() {return true;}
+	@Override
+	public boolean isCredentialsNonExpired() {return true;}
+	@Override
+	public boolean isEnabled() {return true;}
 	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
 }
