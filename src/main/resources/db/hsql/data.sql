@@ -1,3 +1,6 @@
+INSERT INTO roles VALUES (1, 'USER_BASIC');
+INSERT INTO roles VALUES (2, 'USER_ADMIN');
+
 INSERT INTO users VALUES ('maria.silva', 'senh@_maria', 'senh@_maria', 'MARIA', 'SILVA', 'maria.silva@gmail.com', true, 1);
 INSERT INTO users VALUES ('joao.souza', 'senh@joao', 'senh@joao', 'JOAO', 'SOUZA', 'joao.souza@gmail.com', true, 1);
 INSERT INTO users VALUES ('ariel.santos', 'senh@ariel', 'senh@ariel', 'ARIEL', 'SANTOS', 'ariel.santos@gmail.com', true, 1);
@@ -72,6 +75,3 @@ INSERT INTO reads VALUES (27, 12, 10, false, '2019-07-10 07:00:00');
 INSERT INTO reads VALUES (28, 13, 70, false, '2019-07-10 07:00:00');
 INSERT INTO reads VALUES (29, 14, 30, false, '2019-07-10 07:00:00');
 INSERT INTO reads VALUES (30, 15, 10, false, '2019-07-10 07:00:00');
-
-INSERT INTO roles VALUES (1, 'USER_BASIC');
-INSERT INTO roles VALUES (2, 'USER_ADMIN');

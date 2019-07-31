@@ -12,12 +12,12 @@ CREATE TABLE roles (
 CREATE TABLE users (
   username			VARCHAR(20) NOT NULL,
   password			VARCHAR(30) NOT NULL,
-  passwrd_confirm	VARCHAR(30),
+  passowrd_confirm	VARCHAR(30),
   first_name      	VARCHAR(50) NOT NULL,
   last_name			VARCHAR(50) NOT NULL,
   email				VARCHAR(30) NOT NULL,
   enabled   		BOOLEAN DEFAULT TRUE NOT NULL,
-  role_id			INTEGER,
+  role_id			INTEGER NOT NULL,
   PRIMARY KEY (username)
 );
 ALTER TABLE users ADD CONSTRAINT fk_users_roles FOREIGN KEY (role_id) REFERENCES roles (id);

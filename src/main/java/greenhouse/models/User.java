@@ -56,7 +56,7 @@ public class User implements UserDetails{
     @NotEmpty
     private String password;
 	
-	@Column(name = "passwrd_confirm")
+	@Column(name = "password_confirm")
 	private String passwordConfirm;
 	
 	@Column(name = "first_name")
