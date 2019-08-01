@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,11 +26,8 @@ import org.springframework.beans.support.PropertyComparator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class User implements UserDetails, Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -64,10 +62,10 @@ public class User implements UserDetails, Serializable{
     @Column
     private Boolean enabled;
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable( 
 	        name = "fk_users_roles", 
-	        joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "username"), 
+	        joinColumns = @JoinColumn(name = "username", referencedColumnName = "username"), 
 	        inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")) 
     private List<Role> roles;
     

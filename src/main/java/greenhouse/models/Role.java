@@ -10,11 +10,8 @@ import javax.persistence.UniqueConstraint;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 @Table(name = "roles" ,uniqueConstraints = @UniqueConstraint(columnNames = {"id", "role"}))
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Role extends BaseEntity implements GrantedAuthority {
 	private static final long serialVersionUID = 1L;
 
@@ -33,4 +30,8 @@ public class Role extends BaseEntity implements GrantedAuthority {
 	@Override
 	public String getAuthority() {return this.name;}
     
+	@Override
+	public String toString() {
+		return "Role [name=" + name + ", users=" + users + ", getId()=" + getId() + ", isNew()=" + isNew() + "]";
+	}
 }

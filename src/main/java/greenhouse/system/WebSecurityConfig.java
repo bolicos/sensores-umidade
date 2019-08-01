@@ -2,8 +2,8 @@ package greenhouse.system;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -32,7 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	
     	http
             .authorizeRequests()
-                .antMatchers("/", "/welcome", "/registration", "/plants/read", "/resources/**", "/webjars/**").permitAll()
+                .antMatchers("/", "/welcome", "/registration", "/resources/**", "/webjars/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/plants/read").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()

@@ -4,31 +4,29 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 @Table(name = "sensors")
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Sensor extends BaseEntity{
 	private static final long serialVersionUID = 1L;
 	
 	public Sensor() {super();}
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "username")
     private User user;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "plant_id")
     private Plant plant;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@Transient
     private Set<Read> reads;
 

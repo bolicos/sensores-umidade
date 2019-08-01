@@ -10,11 +10,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 @Table(name = "plants")
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Plant extends BaseEntity{
 	private static final long serialVersionUID = 1L;
 	
@@ -25,7 +22,7 @@ public class Plant extends BaseEntity{
 	@JoinColumn(name = "type_id")
 	private Type type;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@Transient
     private Set<Sensor> reads;
 	
