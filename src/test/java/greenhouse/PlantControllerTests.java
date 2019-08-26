@@ -24,7 +24,7 @@ import greenhouse.repositories.PlantRepository;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
-@WithMockUser(roles = "PLANT_ADMIN")
+@WithMockUser(roles = "USER_ADMIN'")
 public class PlantControllerTests {
 	
 	private static final Integer TEST_PLANT_ID = 1;
