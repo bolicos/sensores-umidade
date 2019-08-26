@@ -22,7 +22,8 @@ import greenhouse.repositories.PlantRepository;
 
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(PlantController.class)
+@SpringBootTest(classes = Application.class)
+@AutoConfigureMockMvc
 @WithMockUser(roles = "PLANT_ADMIN")
 public class PlantControllerTests {
 	
