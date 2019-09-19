@@ -36,6 +36,8 @@ public class User implements UserDetails, Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
 	@Column(name = "username", unique = true)
     @NotEmpty
     private String username;
@@ -149,7 +151,7 @@ public class User implements UserDetails, Serializable{
 	}
 	
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {return (Collection<? extends GrantedAuthority>) this.roles;}
+	public Collection<? extends GrantedAuthority> getAuthorities() {return getRoles();}
 	@Override
 	public boolean isAccountNonExpired() {return true;}
 	@Override
