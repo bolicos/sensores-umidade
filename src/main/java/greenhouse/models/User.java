@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -30,6 +32,9 @@ public class User implements UserDetails, Serializable{
 	
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
 	@Column(name = "username", unique = true)
     @NotEmpty
     private String username;
@@ -139,7 +144,7 @@ public class User implements UserDetails, Serializable{
 	}
 	
 	@Override
-	public Collection<GrantedAuthority> getAuthorities() {return this.roles;}
+	public Collection<? extends GrantedAuthority> getAuthorities() {return getRoles();}
 	@Override
 	public boolean isAccountNonExpired() {return true;}
 	@Override

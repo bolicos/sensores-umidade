@@ -1,5 +1,6 @@
 package greenhouse.services;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import javax.transaction.Transactional;
@@ -17,7 +18,6 @@ import greenhouse.repositories.UserRepository;
 
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService{
-	private static final Logger logger = Logger.getLogger(UserDetailsServiceImpl.class.getSimpleName());
 	
 	@Autowired
     private UserRepository userRepository;
@@ -25,12 +25,12 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	
 	@Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findByUsername(username);
+        Optional<User> user = userRepository.findByUsername(username);
         
-        if (user == null) {
+        if (user.isPresent() && user.get() == null) {
             throw new UsernameNotFoundException(username);
         }
-        return user;
+        return user.get();
     }
 	
 }
