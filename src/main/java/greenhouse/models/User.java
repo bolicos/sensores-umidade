@@ -9,12 +9,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -35,7 +30,6 @@ public class User implements UserDetails, Serializable{
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "username", unique = true)
     @NotEmpty
     private String username;
@@ -62,12 +56,8 @@ public class User implements UserDetails, Serializable{
     @Column
     private Boolean enabled;
     
-    @ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable( 
-	        name = "fk_users_roles", 
-	        joinColumns = @JoinColumn(name = "username", referencedColumnName = "username"), 
-	        inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")) 
-    private List<Role> roles;
+    @ManyToMany
+    private Collection<GrantedAuthority> roles = new ArrayList<>();
     
 	@OneToMany
 	private Collection<Sensor> sensors;
@@ -96,8 +86,8 @@ public class User implements UserDetails, Serializable{
     public void setEnabled(Boolean enabled) {this.enabled = enabled;}
 	
  //-------------------------ROLES OF USER-------------------------
-    public List<Role> getRoles() {return roles;}
-    public void setRoles(List<Role> roles) {this.roles = roles;}
+    public Collection<GrantedAuthority> getRoles() {return roles;}
+    public void setRoles(Collection<GrantedAuthority> roles) {this.roles = roles;}
     
 //    public void addRole(String roleName) {
 //        if(this.roles == null) {this.roles = new HashSet<Role>();}
@@ -149,7 +139,7 @@ public class User implements UserDetails, Serializable{
 	}
 	
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {return (Collection<? extends GrantedAuthority>) this.roles;}
+	public Collection<GrantedAuthority> getAuthorities() {return this.roles;}
 	@Override
 	public boolean isAccountNonExpired() {return true;}
 	@Override
@@ -157,7 +147,7 @@ public class User implements UserDetails, Serializable{
 	@Override
 	public boolean isCredentialsNonExpired() {return true;}
 	@Override
-	public boolean isEnabled() {return true;}
+	public boolean isEnabled() {return enabled;}
 	
 	
 //	@Override

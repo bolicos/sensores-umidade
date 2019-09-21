@@ -1,5 +1,6 @@
 DROP TABLE roles IF EXISTS;
 DROP TABLE users IF EXISTS;
+DROP TABLE users_roles IF EXISTS;
 DROP TABLE types IF EXISTS;
 DROP TABLE sensors IF EXISTS;
 DROP TABLE plants IF EXISTS;
@@ -16,10 +17,16 @@ CREATE TABLE users (
   last_name			VARCHAR(50) NOT NULL,
   email				VARCHAR(100) NOT NULL,
   enabled   		BOOLEAN DEFAULT TRUE NOT NULL,
-  role_id			INTEGER NOT NULL,
   PRIMARY KEY (username)
 );
-ALTER TABLE users ADD CONSTRAINT fk_users_roles FOREIGN KEY (role_id) REFERENCES roles (id);
+
+CREATE TABLE users_roles (
+  username              VARCHAR(255) NOT NULL,
+  role_id	            INTEGER NOT NULL,
+  PRIMARY KEY (username,role_id)
+);
+ALTER TABLE users_roles ADD CONSTRAINT fk_users_roles_users FOREIGN KEY (username) REFERENCES users (username);
+ALTER TABLE users_roles ADD CONSTRAINT fk_users_roles_roles FOREIGN KEY (role_id) REFERENCES roles (id);
 
 CREATE TABLE types (
   id				INTEGER IDENTITY PRIMARY KEY,

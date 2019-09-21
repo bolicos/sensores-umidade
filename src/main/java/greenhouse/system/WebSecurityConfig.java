@@ -15,35 +15,29 @@ import greenhouse.services.UserDetailsServiceImpl;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
 	@Autowired
     private UserDetailsServiceImpl userDetailsService;
 	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
-		
-	}
-	
-	
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-    	http
-        .csrf().disable();
-    	
+    protected void configure(HttpSecurity http) throws Exception {  	
     	http
             .authorizeRequests()
                 .antMatchers("/", "/welcome", "/registration", "/resources/**", "/webjars/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/plants/read").permitAll()
-                .anyRequest().authenticated()
-                .and()
+                .anyRequest()
+                .authenticated()
+            .and()
             .formLogin()
                 .loginPage("/login")
                 .permitAll()
-                .and()
+            .and()
             .logout()
+            	.logoutSuccessUrl("/login?logout")
                 .permitAll()
-                .and()
-                .httpBasic();
+            .and()
+            .rememberMe()
+				.userDetailsService(userDetailsService);
     }
 
     @Override
