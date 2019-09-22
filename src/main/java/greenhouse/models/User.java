@@ -43,7 +43,7 @@ public class User implements UserDetails, Serializable{
     private Boolean enabled;
     
     @ManyToMany
-    private Collection<GrantedAuthority> roles = new ArrayList<>();
+    private Collection<Role> roles;
 	
 	@Override
 	public String getUsername() {return username;}
@@ -56,8 +56,8 @@ public class User implements UserDetails, Serializable{
     public String getPasswordConfirm() {return this.passwordConfirm;}
     public void setPasswordConfirm(String passwordConfirm) {this.passwordConfirm = passwordConfirm;}
 	
-    public Collection<GrantedAuthority> getRoles() {return roles;}
-    public void setRoles(Collection<GrantedAuthority> roles) {this.roles = roles;}
+    public Collection<Role> getRoles() {return roles;}
+    public void setRoles(Collection<Role> roles) {this.roles = roles;}
     
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {return getRoles();}
@@ -70,11 +70,11 @@ public class User implements UserDetails, Serializable{
 	@Override
 	public boolean isEnabled() {return enabled;}
 	
-//  public void addRole(String roleName) {
-//  if(this.roles == null) {this.roles = new HashSet<Role>();}
-//  Role role = new Role();
-//  role.setName(roleName);
-//  this.roles.add(role);
-//}
+  public void addRole(String roleName) {
+	  if(this.roles == null) {this.roles = new ArrayList<Role>();}
+	  Role role = new Role();
+	  role.setName(roleName);
+	  this.roles.add(role); 
+	}
 	
 }

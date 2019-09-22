@@ -8,24 +8,16 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 
-public class Customer extends BaseEntity {
+public class Customer extends Person {
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "first_name")
-    @NotEmpty
-    private String firstName;
-
-    @Column(name = "last_name")
-    @NotEmpty
-    private String lastName; 
-	
-	@Column
-    @NotEmpty
+	@Column(name = "email", nullable = false)
+    @NotBlank(message = "Campo email obrigatorio.")
     private String email;
     
     @Column
@@ -34,12 +26,6 @@ public class Customer extends BaseEntity {
     @OneToMany
 	private Collection<Sensor> sensors;
     
-    public String getFirstName() {return this.firstName;}
-    public void setFirstName(String firstName) {this.firstName = firstName;}
-
-    public String getLastName() {return this.lastName;}
-    public void setLastName(String lastName) {this.lastName = lastName;}
-	
     public String getEmail() {return email;}
 	public void setEmail(String email) {this.email = email;}
 	
