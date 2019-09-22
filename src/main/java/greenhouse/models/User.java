@@ -1,14 +1,10 @@
 package greenhouse.models;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -19,14 +15,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "users")
-public class User implements UserDetails, Serializable{
+public class User extends BaseEntity implements UserDetails{
 	private static final long serialVersionUID = 1L;
 
 	public User() {}
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 	
 	@NotBlank(message = "Campo nome obrigatorio.")
 	@Column(name = "username", unique = true)
@@ -70,7 +62,7 @@ public class User implements UserDetails, Serializable{
 	@Override
 	public boolean isEnabled() {return enabled;}
 	
-  public void addRole(String roleName) {
+	public void addRole(String roleName) {
 	  if(this.roles == null) {this.roles = new ArrayList<Role>();}
 	  Role role = new Role();
 	  role.setName(roleName);
