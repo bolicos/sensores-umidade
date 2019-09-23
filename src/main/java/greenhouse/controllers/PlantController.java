@@ -11,10 +11,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import greenhouse.models.Plant;
+import greenhouse.models.Read;
 import greenhouse.models.Sensor;
 import greenhouse.models.Type;
 import greenhouse.repositories.PlantRepository;
+import greenhouse.repositories.ReadRepository;
 import greenhouse.repositories.SensorRepository;
 import greenhouse.repositories.TypeRepository;
 
@@ -25,18 +26,20 @@ public class PlantController {
 	private PlantRepository plants;
 	private SensorRepository sensors;
 	private TypeRepository types;
+	private ReadRepository reads;
 	
-	public PlantController(PlantRepository plants, SensorRepository sensors, TypeRepository types) {
+	public PlantController(PlantRepository plants, SensorRepository sensors, TypeRepository types, ReadRepository reads) {
 		super();
 		this.plants = plants;
 		this.sensors = sensors;
 		this.types = types;
+		this.reads = reads;
 	}
 	
 	@GetMapping("/plants/read")
 	public String listReadPlants(Model model) {
-		Collection<Plant> readList = plants.findAll();	
-		model.addAttribute("plants", readList);
+		Collection<Read> readList = reads.findAll();
+		model.addAttribute("reads", readList);
 		return "read/readList";
 	}
 	

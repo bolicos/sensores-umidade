@@ -7,14 +7,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import greenhouse.services.UserDetailsServiceImpl;
+import greenhouse.security.AuthenticateService;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserDetailsServiceImpl userDetailsService;
+	private AuthenticateService user;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -22,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/", "/welcome", "/registration", "/resources/**", "/webjars/**", "/h2/**", "/admin/**")
 				.permitAll().antMatchers(HttpMethod.POST, "/plants/read").permitAll().anyRequest().authenticated().and()
 				.formLogin().loginPage("/login").permitAll().and().logout().logoutSuccessUrl("/login?logout")
-				.permitAll().and().rememberMe().userDetailsService(userDetailsService);
+				.permitAll().and().rememberMe().userDetailsService(user);
 		http.csrf().ignoringAntMatchers("/h2/**");
         //this will allow frames with same origin which is much more safe
         http.headers().frameOptions().sameOrigin();

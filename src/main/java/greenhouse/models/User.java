@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -18,8 +19,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class User extends BaseEntity implements UserDetails{
 	private static final long serialVersionUID = 1L;
 
-	public User() {}
-	
 	@NotBlank(message = "Campo nome obrigatorio.")
 	@Column(name = "username", unique = true)
     private String username;
@@ -34,9 +33,26 @@ public class User extends BaseEntity implements UserDetails{
 	@Column(name = "enabled", nullable = false)
     private Boolean enabled;
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles;
 	
+	public User() {
+		super();
+	}
+	
+	public User(@NotBlank(message = "Campo nome obrigatorio.") String username,
+			@NotBlank(message = "Campo senha obrigatorio.") String password, String passwordConfirm, Boolean enabled,
+			Collection<Role> roles) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.passwordConfirm = passwordConfirm;
+		this.enabled = enabled;
+		this.roles = roles;
+	}
+
+
+
 	@Override
 	public String getUsername() {return username;}
 	public void setUsername(String username) {this.username = username;}
@@ -68,5 +84,12 @@ public class User extends BaseEntity implements UserDetails{
 	  role.setName(roleName);
 	  this.roles.add(role); 
 	}
+
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", password=" + password + ", passwordConfirm=" + passwordConfirm
+				+ ", enabled=" + enabled + ", roles=" + roles + ", id=" + id + ", isNew()=" + isNew() + "]";
+	}
+
 	
 }

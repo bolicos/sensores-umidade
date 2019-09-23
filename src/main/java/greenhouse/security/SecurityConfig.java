@@ -1,4 +1,4 @@
-package greenhouse.system;
+package greenhouse.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

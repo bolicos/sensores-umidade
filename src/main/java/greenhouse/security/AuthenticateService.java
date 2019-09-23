@@ -19,7 +19,7 @@ public class AuthenticateService implements UserDetailsService{
 
 	@Override
 	public UserDetails loadUserByUsername(String user){
-		Optional<User> usuario= repository.findByUsername(user);
+		Optional<User> usuario = repository.findByUsername(user);
 		if(usuario.isPresent())	{return usuario.get();}
 		else {throw new UsernameNotFoundException("Dados Inválidos");}
 	}

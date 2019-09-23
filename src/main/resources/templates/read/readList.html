@@ -19,7 +19,7 @@
 		<tbody>
 		<tr th:each="plan : ${plants}">
 			<td th:text="${plan.id}" />
-			<td><a th:href="@{/sensors/__${plan.idSensor.id}__}"
+			<td><a th:href="@{/sensors/__${plan.idSensor.getId()}__}"
 				th:text="${plan.idSensor.id}" /></a></td>
 			<td><a th:href="@{/plants/__${plan.type.id}__}"
 				th:text="${plan.type.name}" /></a></td>
