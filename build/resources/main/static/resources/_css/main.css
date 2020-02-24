@@ -1,0 +1,27 @@
+h1 {			padding: 50px;
+			 	color: green;
+			 	font-family: calibri;
+			 	text-align: center;
+			 	font-size: 300%;
+			}
+			table {
+			 	font-family: arial, sans-serif;
+			 	border: 1px solid black;
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			td, th {
+  				border-collapse: collapse;
+			  	border: 1px solid #dddddd;
+			  	text-align: center;
+			  	padding: 8px;
+			}
+			th {
+				background-color: black;
+  				color: white;
+			}
+
+			tr:nth-child(even) {
+			 	background-color: #dddddd;
+			}

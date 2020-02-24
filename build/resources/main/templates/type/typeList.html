@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{fragments/layout :: layout (~{::body},'plants')}">
+<head></head>
+
+<body>
+
+	<h2>Plant Types</h2>
+	<table id="plants" class="table table-striped">
+		<thead>
+		<tr>
+			<th style="width: 150px;">ID</th>
+			<th style="width: 150px;">NAME</th>
+			<th style="width: 150px;">IDEAL TRACK</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="typ : ${types}">
+			<td>
+				<p th:text="${typ.id}"></p>
+			</td>
+			<td>
+				<p th:text="${typ.name}"></p>
+			</td>
+			<td>
+				<p th:text="${typ.trackmin + '% - '  + typ.trackmax + '%'}"></p>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+#menu {
+	padding: 0px;
+}
+#menu ul {
+    left: 0px;
+	top: 0;
+	margin: 0;
+	padding: 15px;
+	position: fixed;
+	font-family:verdana;
+	font-size: 30px;
+	text-transform: uppercase;
+	text-align:center;
+	width: 100%;
+	height: auto;
+	padding: 10px;
+	background-color: #069;
+	list-style: none; 
+	/* remove os pontinhos antes dos itens */
+}
+
+#menu ul li {
+	display: inline;
+		
+	/* alinha os itens na horizontal */
+}
+#menu ul li a {
+	border-radius: 7px;
+	padding: 2px 10px;
+	display: inline-block;
+	margin-left: 15px;
+	background-color: #069;
+	color: #fff;
+	text-decoration: none; 
+	/* remove o sublinhado do link */
+}
+#menu ul li a:hover { 
+	/* efeito para quando passar o mouse sobre o item do menu */
+	background-color: #a0a0a0;
+	color: white;
+}
+#menu li a.active {
+	background-color: #4CAF50;
+	color: white;
+}
+#menu img {
+	font-size:24px;
+	width: 60px;
+	height: 50px;
+	float:left;
+}
+#menu sigin {
+	float:right;
+}
+div.content{
+	float:none;
+	margin-left: 0;
+	padding: 5px;
+	
+}
+@media screen and (max-width: 900px) {
+  #menu ul  {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  #menu ul li a {
+    float: none;
+    padding: 15px;
+  }
+  
+  div.content {
+		float:none;
+		margin-left: 0;
+		padding: 5px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	#menu ul  {
+		position: fixed;
+		float:none;
+		
+  }
+  #menu li a {
+
+	height: auto;
+    text-align: center;
+    float: none;
+	
+  }
+  div.content {
+		float:none;
+		margin-left: 0;
+	}
+}
