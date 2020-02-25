@@ -22,12 +22,14 @@
 hs_err_pid*
 
 target/*
+build/*
 .settings/*
 .classpath
 .project
 .idea
 *.iml
 /target
+/build
 
 generated/
 
