@@ -11,7 +11,7 @@ import greenhouse.repositories.ReadRepository;
 import greenhouse.services.ReadService;
 
 @RestController
-@RequestMapping("/plants")
+@RequestMapping("/v1/plants")
 public class ReadRestController {
 	
 	private ReadRepository readRepository;
@@ -26,7 +26,6 @@ public class ReadRestController {
 	@PostMapping(value = "/read", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Read> addRead(@RequestBody Read read) {
 		try{
-			
 			this.readRepository.save(this.readservice.saveRead(read));
 			return new ResponseEntity<>(read, HttpStatus.CREATED);
 		} catch (Exception notCreated){
