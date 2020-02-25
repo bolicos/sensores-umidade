@@ -15,7 +15,7 @@ public class BaseEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
 	
-	public BaseEntity() {
+	BaseEntity() {
 		super();
 	}
 	

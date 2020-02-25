@@ -1,19 +1,16 @@
 package greenhouse.system;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import greenhouse.security.AuthenticateService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import greenhouse.security.AuthenticateService;
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
 	private AuthenticateService user;
 
 	@Override
