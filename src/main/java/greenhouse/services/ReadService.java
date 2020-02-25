@@ -1,14 +1,25 @@
 package greenhouse.services;
 
-import org.springframework.dao.DataAccessException;
+import greenhouse.models.Read;
+import greenhouse.models.Sensor;
+import greenhouse.repositories.SensorRepository;
 import org.springframework.stereotype.Service;
 
-import greenhouse.models.Read;
+import java.util.Optional;
 
 @Service
-public interface ReadService {
+public class ReadService implements IReadService{
+	private SensorRepository repository;
 
-	Read saveRead(Read read) throws DataAccessException;
-
+	public ReadService(SensorRepository repository) {
+		this.repository = repository;
+	}
+	
+	@Override
+	public Read saveRead(Read read) {
+		Long id = read.getIdSensor().getId();
+		Optional<Sensor> sensor = this.repository.findById(id);
+		sensor.ifPresent(read::setIdSensor);
+		return read;
+	}
 }
-

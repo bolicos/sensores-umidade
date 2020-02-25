@@ -1,18 +1,13 @@
 package greenhouse.repositories;
 
-import java.util.Collection;
-
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.repository.Repository;
-
+import greenhouse.dtos.SensorProjection;
 import greenhouse.models.Sensor;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface SensorRepository extends Repository<Sensor, Integer>{
-	Collection<Sensor> findAll() throws DataAccessException;
-	Sensor findById(Integer id) throws DataAccessException;
-	Sensor findById(Sensor idSensor) throws DataAccessException;
-	
-	public void save(Sensor sensor) throws DataAccessException;
-	public void delete(Sensor sensor) throws DataAccessException;
-	
+import java.util.List;
+
+@Repository
+public interface SensorRepository extends JpaRepository<Sensor, Long> {
+	List<SensorProjection> findAllByStatusTrueOrderByName();
 }
