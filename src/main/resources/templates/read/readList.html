@@ -24,7 +24,7 @@
 			<td><a th:href="@{/plants/__${plan.type.id}__}"
 				th:text="${plan.type.name}" /></a></td>
 			<td th:text="${plan.humidity + '%'}" />
-			<td th:text="${plan.status}" />
+			<td th:text="${plan.status}" >
 			<td
 				th:text="${plan.type.trackmin + '% - '  + plan.type.trackmax + '%'}" />
 			<td th:text="${plan.dataTime}" />
